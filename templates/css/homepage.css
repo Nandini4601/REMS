@@ -1,0 +1,155 @@
+
+body{
+  font-family: "Montserrat";
+  text-align: center;
+}
+h1,h2,h3,h4,h5,h6{
+  font-family: "Montserrat";
+  font-weight: bold;
+}
+
+p{
+  color: #8f8f8f;
+}
+.container-fluid{
+  padding: 7% 10%;
+}
+
+/* heading section */
+.big-heading{
+  font-size: 3.3rem;
+  line-height: 1.5;
+}
+.section-heading{
+  font-size: 3rem;
+  line-height: 1.5;
+}
+/* sections */
+.coloured{
+  background-color: #FDD2BF;
+  color: #fff;
+}
+
+.white-section{
+  background-color: #fff;
+}
+
+
+/* navigation bar */
+.navbar{
+  background-color: #492F10;
+}
+.navbar-brand{
+  font-family: "Ubuntu";
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+.nav-item{
+  padding: 0 18px;
+}
+.nav-link{
+  font-family: "Montserrat";
+  font-size: 1.2rem;
+}
+/* download button */
+.dbutton{
+  margin: 5% 3% 5% 0;
+}
+.fab{
+  margin-right:4px;
+}
+/* title section*/
+#title{
+ text-align: left;
+}
+/* combined selectors */
+#title .container-fluid{
+  padding: 3% 15% 7%;
+}
+
+/* features */
+#features{
+  position: relative;
+}
+.feature-title{
+  font-size: 1.5rem;
+}
+.ftb{
+  text-align:center;
+  padding: 5%;
+}
+
+.icfa{
+  color: #ef8172;
+  padding-bottom: 4%;
+}
+.icfa:hover{
+  color: #ff4c68;
+}
+/* testimonial section */
+
+.testimonial-text
+{
+  margin: 100px 0 0 50px;
+  text-align: center;
+  font-size: 2.5rem;
+  line-height: 1.5;
+}
+
+.testimonial-img{
+  height: 600px;
+  width:600px;
+  border-radius: 20%;
+  object-fit: cover;
+  margin-left: 8px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+@media (max-width:1096px) {
+  #title{
+    text-align: center;
+  }
+  .testimonial-img{
+    position: static;
+    width:230px;
+    height:230px;
+  }
+
+}
+
+.carousel-control-prev , .carousel-control-next
+{
+  background-color:#E98580;
+}
+
+/* apartment info  section */
+#apartment-info{
+  background-color: #DF5E5E;
+text-align: left;
+  padding-bottom: 3%;
+}
+#rule-list{
+  font-size: 1.5rem;
+}
+
+/* price section */
+#pricing{
+  padding: 100px;
+}
+.priceing-text{
+  font-size: 2.5rem;
+  line-height: 1.5;
+}
+
+.price-col{
+  padding: 3% 2%;
+}
+/* cta */
+
+/* footer section */
+#footer
+{
+  background-color: #012443;
+
+}
