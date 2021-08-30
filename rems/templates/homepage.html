@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <title>Lalitha apartments</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/homepage.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/homepage.css') }}">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
   <!-- for icons  fontawesome -->
   <script src="https://kit.fontawesome.com/a19c43a5a2.js" crossorigin="anonymous"></script>
@@ -41,7 +41,7 @@
               <a class="nav-link" href="#apartment-info">Apt-info</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="login.html">Log in</a>
+              <a class="nav-link" href="{{ url_for('login') }}">Log in</a>
             </li>
           </ul>
         </div>
@@ -50,14 +50,14 @@
         <div class="carousel-inner">
           <div class="carousel-item active container-fluid">
             <div class=" col-12">
-              <img class="testimonial-img" src="../images/img-1.jpeg" alt="apartment pic 1">
+              <img class="testimonial-img" src="{{ url_for('static', filename= 'images/img-1.jpeg') }}" alt="apartment pic 1">
             </div>
           </div>
 
           <div class="carousel-item container-fluid">
 
             <div class=" col-12">
-              <img class="testimonial-img" src="../images/img-2.jpeg" alt="apartment pic 2">
+              <img class="testimonial-img" src="{{ url_for('static', filename= 'images/img-2.jpeg') }}" alt="apartment pic 2">
             </div>
 
 
@@ -66,7 +66,7 @@
           <div class="carousel-item container-fluid">
 
             <div class=" col-12">
-              <img class="testimonial-img" src="../images/img-3.jpg" alt="apartment pic 3">
+              <img class="testimonial-img" src="{{ url_for('static', filename= 'images/img-3.JPG') }}" alt="apartment pic 3">
             </div>
 
           </div>
@@ -74,7 +74,7 @@
           <div class="carousel-item container-fluid">
 
             <div class=" col-12">
-              <img class="testimonial-img" src="../images/img-4.jpg" alt="apartment pic 4">
+              <img class="testimonial-img" src="{{ url_for('static', filename= 'images/img-4.JPG') }}" alt="apartment pic 4">
             </div>
 
 
@@ -83,7 +83,7 @@
           <div class="carousel-item container-fluid">
 
             <div class="col-12">
-              <img class="testimonial-img" src="../images/img-5.jpg" alt="apartment pic 5">
+              <img class="testimonial-img" src="{{ url_for('static', filename= 'images/img-5.JPG') }}" alt="apartment pic 5">
             </div>
 
           </div>
@@ -92,7 +92,7 @@
           <div class="carousel-item container-fluid">
 
             <div class="col-12">
-              <img class="testimonial-img" src="../images/img-6.jpeg" alt="apartment pic 6">
+              <img class="testimonial-img" src="{{ url_for('static', filename= 'images/img-6.jpeg') }}" alt="apartment pic 6">
             </div>
 
 
@@ -101,7 +101,7 @@
           <div class="carousel-item container-fluid">
 
             <div class=" col-12">
-              <img class="testimonial-img" src="../images/img-7.jpeg" alt="apartment pic 7">
+              <img class="testimonial-img" src="{{ url_for('static', filename= 'images/img-7.jpeg') }}" alt="apartment pic 7">
             </div>
           </div>
 
