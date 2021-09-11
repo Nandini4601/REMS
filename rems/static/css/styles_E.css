@@ -1,0 +1,86 @@
+body{
+  font-family: "Montserrat";
+}
+
+h1{
+  color: #fff;
+  line-height: 1.5;
+  font-family: "Montserrat" ;
+  font-weight: bold;
+  font-size: 5rem;
+}
+
+h2{
+  /* color: #7D1935; */
+  font-size: 60px;
+  font-family: "Montserrat" ;
+  font-weight: bold;
+  padding-bottom: 50px;
+}
+
+h3{
+  /* color: #3D087B; */
+  font-size: 60px;
+  font-family: "Montserrat" ;
+  font-weight: bold;
+  padding-bottom: 50px;
+}
+
+.view{
+   color: #66BFBF;
+   text-align: center;
+   font-size: 100px;
+}
+#title{
+  text-align: center;
+  background-color: #492F10;
+}
+
+#Add_Data{
+  text-align: center;
+  background-color: #E98580;
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+
+#Remove_Data{
+  background-color: #FDD2BF;
+  text-align: center;
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+#view_data{
+    background-color: #FCDEC0;
+    padding-top: 70px;
+      padding-bottom: 70px;
+}
+.row{
+  text-align: center;
+}
+
+/* .container-fluid{
+    background-color: #ff4c68;
+} */
+
+.navbar{
+  padding: 1%;
+}
+
+.navbar-brand{
+  font-family: "Ubuntu";
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.nav-item{
+  padding: 0 18px;
+}
+
+
+
+.nav-link{
+  font-size: 1.2rem;
+  font-family: "Montserrat-light";
+}
