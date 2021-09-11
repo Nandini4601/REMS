@@ -24,27 +24,28 @@
     <title>Sign In</title>
 </head>
 <body>
+
 <div id="fullscreen_bg" class="fullscreen_bg"/>
 
 <div class="container">
-    <h1>Employee Sign In</h1>
-    <form action="" method="post" novalidate>
+    <h1 class="form-signin-heading">Employee Sign In</h1>
+    <form action="" method="post" novalidate class="form-signin">
         {{ form.hidden_tag() }}
-        <p>
-            {{ form.username.label }}<br>
+        <p class="form-control">
+            {{ form.username.label}}<br>
             {{ form.username(size=32) }}<br>
             {% for error in form.username.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>
+        <p class="form-control">
             {{ form.password.label }}<br>
             {{ form.password(size=32) }}<br>
             {% for error in form.password.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>{{ form.submit() }}</p>
+        <button class="btn btn-lg btn-dark btn-block col-12">Sign in{{ form.submit(class="btn") }}</button>
     </form>
 </div>
 
