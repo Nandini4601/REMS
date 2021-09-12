@@ -40,3 +40,8 @@ def home2():
 def logout():
     logout_user()
     return redirect(url_for('home'))
+
+
+@app.route('/addtenant')
+def add_tenant():
+    return render_template('tenants.html')
