@@ -9,7 +9,13 @@ h1{
   font-weight: bold;
   font-size: 5rem;
 }
-
+.anchor{
+  color: #fff;
+  text-decoration: none;
+}
+.anchor:hover{
+  color: grey;
+}
 h2{
   /* color: #7D1935; */
   font-size: 60px;
