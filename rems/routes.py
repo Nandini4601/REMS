@@ -45,3 +45,8 @@ def logout():
 @app.route('/addtenant')
 def add_tenant():
     return render_template('tenants.html')
+
+
+@app.route('/addemp')
+def add_employee():
+    return render_template('employee.html')
