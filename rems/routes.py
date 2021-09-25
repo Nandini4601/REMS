@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for, request,g
+from flask import render_template, flash, redirect, url_for, request, g
 from rems import app, db
 from rems.forms import LoginForm, EmployeeAddForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -46,6 +46,11 @@ def logout():
 @app.route('/addtenant')
 def add_tenant():
     return render_template('tenants.html')
+
+
+@app.route('/addhouse')
+def add_house():
+    return render_template('houses.html')
 
 
 @app.route('/addemp', methods=['GET', 'POST'])
