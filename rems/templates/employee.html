@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block heading %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/employee.css') }}">
-
+<title>Employee entry page</title>
 <!-- Bootstrap DatePicker -->
 <script type="text/javascript">
   $(function() {
@@ -9,6 +9,16 @@
       format: "dd/mm/yyyy"
     });
   });
+
+
+
+
+
+
+
+
+
+
 
 
 </script>
@@ -25,79 +35,136 @@
 
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <h3 class="register-heading2">Enter the data here</h3>
+                    <h3 class="register-heading2">Enter Employee Data</h3>
                     <div class="row register-form">
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="First Name *" value=""/>
-                            </div>
+                            <form action="{{ url_for('add_employee') }}" method="POST">
+                                {{ form.hidden_tag() }}
+                                <!--                            <div class="form-group">-->
+                                <!--                                <input type="text" class="form-control" placeholder="First Name *" value=""/>-->
+                                <!--                            </div>-->
+                                <p>
+                                    {{ form.firstname.label }}<br>
+                                    {{ form.firstname(size=32) }}<br>
+                                    {% for error in form.firstname.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
 
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Last Name *" value=""/>
-                            </div>
+                                <!--                                <div class="form-group">-->
+                                <!--                                    <input type="text" class="form-control" placeholder="Last Name *" value=""/>-->
+                                <!--                                </div>-->
+                                <p>
+                                    {{ form.lastname.label }}<br>
+                                    {{ form.lastname(size=32) }}<br>
+                                    {% for error in form.lastname.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
+
+                                <!--                                <div class="form-group">-->
+                                <!--                                    <input id="txtDate" type="text" class="form-control date-input"-->
+                                <!--                                           placeholder="Date of birth" readonly="readonly"/>-->
+                                <!--                                </div>-->
+                                <p>
+                                    {{ form.DoB.label }}<br>
+                                    {{ form.DoB(size=32) }}<br>
+                                    {% for error in form.DoB.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
 
 
-                            <div class="form-group">
-                                <input id="txtDate" type="text" class="form-control date-input"
-                                       placeholder="Date of birth" readonly="readonly"/>
+                                <!--                                <div class="form-group">-->
+                                <!--                                    <input type="text" name="country_code" class="form-control" title="Error Message"-->
+                                <!--                                           placeholder="Phone number" pattern="[1-9]{1}[0-9]{9}">-->
+                                <!--                                </div>-->
+                                <p>
+                                    {{ form.mobile.label }}<br>
+                                    {{ form.mobile(size=32) }}<br>
+                                    {% for error in form.mobile.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
 
-                            </div>
+                                <!--                                <div class="form-group">-->
+                                <!--                                    <input type="text" name="country_code" class="form-control" title="Error Message"-->
+                                <!--                                           placeholder="Emergency Phone number" pattern="[1-9]{1}[0-9]{9}">-->
+                                <!--                                </div>-->
+
+                                <p>
+                                    {{ form.emer_mobile.label }}<br>
+                                    {{ form.emer_mobile(size=32) }}<br>
+                                    {% for error in form.emer_mobile.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
+
+                                <!-- Text input-->
+                                <!--                                <div class="form-group">-->
+                                <!--                                    &lt;!&ndash; <label class="col-sm-2 control-label" for="textinput">Line 1</label> &ndash;&gt;-->
+                                <!--                                    <input type="text" placeholder="xyz@123.com" class="form-control">-->
+                                <!--                                </div>-->
+                                <p>
+                                    {{ form.email.label }}<br>
+                                    {{ form.email(size=32) }}<br>
+                                    {% for error in form.email.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
 
 
-                            <div class="form-group">
-                                <input type="text" name="country_code" class="form-control" title="Error Message"
-                                       placeholder="Phone number" pattern="[1-9]{1}[0-9]{9}">
-                            </div>
+                                <!--                                <div class="form-group">-->
+                                <!--                                    <select class="form-control" name="">-->
+                                <!--                                        <option value="">choose services</option>-->
+                                <!--                                        <option value="Electrician">Electrician</option>-->
+                                <!--                                        <option value="Plumber">Plumber</option>-->
+                                <!--                                        <option value="Carpenter">Carpenter</option>-->
+                                <!--                                        <option value="Painter">Painter</option>-->
+                                <!--                                        <option value="House keeper">House keeper</option>-->
+                                <!--                                        <option value="Manager">Manager</option>-->
+                                <!--                                        <option value="Marketing Executive">Marketing Executive</option>-->
+                                <!--                                        <option value="Owner">Owner</option>-->
+                                <!--                                    </select>-->
+                                <!--                                </div>-->
 
-                            <div class="form-group">
-                                <input type="text" name="country_code" class="form-control" title="Error Message"
-                                       placeholder="Emergency Phone number" pattern="[1-9]{1}[0-9]{9}">
-                            </div>
+                                <p>
+                                    {{ form.service_list.label }}<br>
+                                    {{ form.service_list}}<br>
+                                    {% for error in form.service_list.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
 
-                            <legend>E-Mail</legend>
+                                <!--                                <h4>Gender</h4>-->
+                                <!--                                <div class="col-6">-->
+                                <!--                                    <input type="radio" name="flexRadioDefault" id="flexRadioDefault1"-->
+                                <!--                                           value="flexRadioDefault1">-->
+                                <!--                                    <label for="flexRadioDefault1"> Male</label>-->
+                                <!--                                    <input type="radio" name="flexRadioDefault" id="flexRadioDefault2"-->
+                                <!--                                           value="flexRadioDefault2">-->
+                                <!--                                    <label for="flexRadioDefault2"> Female</label>-->
+                                <!--                                    <input type="radio" name="flexRadioDefault" id="flexRadioDefault2"-->
+                                <!--                                           value="flexRadioDefault3">-->
+                                <!--                                    <label for="flexRadioDefault3"> Transgender</label>-->
+                                <!--                                </div>-->
 
-                            <!-- Text input-->
-                            <div class="form-group">
-                                <!-- <label class="col-sm-2 control-label" for="textinput">Line 1</label> -->
-                                <input type="text" placeholder="xyz@123.com" class="form-control">
-                            </div>
+                                <p>
+                                    {{ form.gender.label }}<br>
+                                    {{ form.gender(size=32) }}<br>
+                                    {% for error in form.gender.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
 
-                            <div class="form-group">
-                                <select class="form-control" name="">
-                                    <option value="">choose services</option>
-                                    <option value="Electrician">Electrician</option>
-                                    <option value="Plumber">Plumber</option>
-                                    <option value="Carpenter">Carpenter</option>
-                                    <option value="Painter">Painter</option>
-                                    <option value="House keeper">House keeper</option>
-                                    <option value="Manager">Manager</option>
-                                    <option value="Marketing Executive">Marketing Executive</option>
-                                    <option value="Owner">Owner</option>
-                                </select>
-                            </div>
-
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-
-                                <h4>Gender</h4>
-                                <div class="col-6">
-                                    <input type="radio" name="flexRadioDefault" id="flexRadioDefault1"
-                                           value="flexRadioDefault1">
-                                    <label for="flexRadioDefault1"> Male</label>
-                                    <input type="radio" name="flexRadioDefault" id="flexRadioDefault2"
-                                           value="flexRadioDefault2">
-                                    <label for="flexRadioDefault2"> Female</label>
-                                    <input type="radio" name="flexRadioDefault" id="flexRadioDefault2"
-                                           value="flexRadioDefault3">
-                                    <label for="flexRadioDefault3"> Transgender</label>
-                                </div>
-                            </div>
-
-                            <input type="submit" class="btnRegister" value="Add"/>
+                                <p>{{ form.submit() }}</p>
+                            </form>
                         </div>
                     </div>
                 </div>
-
             </div>
-            {% endblock %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

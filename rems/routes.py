@@ -1,9 +1,10 @@
-from flask import render_template, flash, redirect, url_for, request
-from rems import app
-from rems.forms import LoginForm
+from flask import render_template, flash, redirect, url_for, request,g
+from rems import app, db
+from rems.forms import LoginForm, EmployeeAddForm
 from flask_login import current_user, login_user, logout_user, login_required
-from rems.models import User
+from rems.models import User, Employee
 from werkzeug.urls import url_parse
+from rems.util import get_serviceid
 
 
 @app.route('/')
@@ -47,6 +48,20 @@ def add_tenant():
     return render_template('tenants.html')
 
 
-@app.route('/addemp')
+@app.route('/addemp', methods=['GET', 'POST'])
 def add_employee():
-    return render_template('employee.html')
+    form = EmployeeAddForm()
+    if form.validate_on_submit():
+        emp = Employee(fname=form.firstname.data,
+                       lname=form.lastname.data,
+                       mobile=form.mobile.data,
+                       emer_num=form.emer_mobile.data,
+                       dob=form.DoB.data,
+                       email=form.email.data,
+                       gender=form.gender.data,
+                       service_id=form.service_list.data.id)
+        db.session.add(emp)
+        db.session.commit()
+        flash('Successfully added new employee')
+        return redirect(url_for('home2'))
+    return render_template('employee.html', form=form)

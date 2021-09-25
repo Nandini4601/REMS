@@ -18,7 +18,7 @@ class Employee(db.Model):
     user = db.relationship("User", uselist=False, backref="employee")
 
     def __repr__(self):
-        return '<Employee {}>'.format(self.fname)
+        return '<Employee {}>   '.format(self.fname)
 
 
 class Service(db.Model):
