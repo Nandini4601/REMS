@@ -41,7 +41,10 @@ def home2():
 def logout():
     logout_user()
     return redirect(url_for('index'))
-
+    
+@app.route('/home3')
+def home3():
+    return render_template('homepage.html')
 
 @app.route('/addtenant')
 def add_tenant():

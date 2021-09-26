@@ -25,6 +25,12 @@
     border-top-left-radius: 10% 50%;
     border-bottom-left-radius: 10% 50%;
 }
+.container-register {
+    width: 100%;
+    padding-right: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
 .register-left img{
     margin-top: 15%;
     margin-bottom: 5%;
@@ -112,4 +118,29 @@
     font-family: "Montserrat";
     font-weight: bold;
 
+}
+#title{
+  text-align: center;
+  background: -webkit-linear-gradient(right, #7D1935, #90AACB);
+}
+
+.navbar{
+  padding: 1%;
+}
+
+.navbar-brand{
+  font-family: "Ubuntu";
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.nav-item{
+  padding: 0 18px;
+}
+
+
+
+.nav-link{
+  font-size: 1.2rem;
+  font-family: "Montserrat-light";
 }
