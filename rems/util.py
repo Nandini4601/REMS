@@ -1,6 +1,6 @@
+# from rems.models import Apartment
+# ''' this is for populating houses'''
+# a=Apartment.query
+# for apt in a:
+#     print(apt.locality)
 
-
-def get_serviceid(s_type):
-    x = {"Electrician": 1, "Plumber": 2, "Carpenter": 3, "Painter": 4, "House Keeper": 5, "Marketing Executive": 6,
-         "Owner": 7, "Manager": 8}
-    return x[s_type]

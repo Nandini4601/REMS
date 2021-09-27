@@ -4,7 +4,7 @@ from rems.forms import LoginForm, EmployeeAddForm
 from flask_login import current_user, login_user, logout_user, login_required
 from rems.models import User, Employee
 from werkzeug.urls import url_parse
-from rems.util import get_serviceid
+
 
 
 @app.route('/')
