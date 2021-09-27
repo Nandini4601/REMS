@@ -1,0 +1,25 @@
+#title{
+  text-align: center;
+  /* background: -webkit-linear-gradient(right, #7D1935, #90AACB); */
+  background-color:#7D1935;
+}
+
+.navbar{
+  padding: 1%;
+}
+
+.navbar-brand{
+  font-family: "Ubuntu";
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.nav-item{
+  padding: 0 18px;
+  font-family: "Ubuntu";
+}
+
+.nav-link{
+  font-size: 1.2rem;
+  font-family: "Ubuntu";
+}

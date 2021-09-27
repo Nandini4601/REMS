@@ -25,6 +25,12 @@
     border-top-left-radius: 10% 50%;
     border-bottom-left-radius: 10% 50%;
 }
+.container-register {
+    width: 100%;
+    padding-right: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
 .register-left img{
     margin-top: 15%;
     margin-bottom: 5%;
@@ -96,7 +102,7 @@
     text-align: center;
     margin-top: 8%;
     padding-top: 100px;
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: #fff;
     font-family: "Montserrat";
     font-weight: bold;
@@ -113,3 +119,4 @@
     font-weight: bold;
 
 }
+/*

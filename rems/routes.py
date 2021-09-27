@@ -47,6 +47,9 @@ def logout():
 def add_tenant():
     return render_template('tenants.html')
 
+@app.route('/addtrans')
+def add_trans():
+    return render_template('transactions.html')
 
 @app.route('/addhouse')
 def add_house():

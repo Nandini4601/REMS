@@ -25,6 +25,12 @@
     border-top-left-radius: 10% 50%;
     border-bottom-left-radius: 10% 50%;
 }
+.container-register {
+    width: 100%;
+    padding-right: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
 .register-left img{
     margin-top: 15%;
     margin-bottom: 5%;
@@ -113,3 +119,4 @@
     font-weight: bold;
 
 }
+/* 
