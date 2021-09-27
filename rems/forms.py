@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
-from rems.models import Service, Employee
+from rems.models import Service, Employee, Apartment
 from wtforms.fields.html5 import DateField
 
 
@@ -19,7 +19,8 @@ class EmployeeAddForm(FlaskForm):
     mobile = StringField('Mobile Number', validators=[DataRequired()])
     emer_mobile = StringField('Emergency mobile Number', validators=[DataRequired()])
     email = StringField('Email Address', validators=[DataRequired()])
-    service_list = QuerySelectField('Choose service', query_factory=lambda: Service.query, allow_blank=False,get_label='service_type')
+    service_list = QuerySelectField('Choose service', query_factory=lambda: Service.query, allow_blank=False,
+                                    get_label='service_type')
     gender = StringField('Gender', validators=[DataRequired()])
     submit = SubmitField('Add Employee')
 
@@ -27,3 +28,13 @@ class EmployeeAddForm(FlaskForm):
         emp = Employee.query.filter_by(email=email.data).first()
         if emp is not None:
             raise ValidationError('Please use a different email address.')
+
+
+class HouseAddForm(FlaskForm):
+    apt_num = QuerySelectField('Branch', query_factory=lambda: Apartment.query, allow_blank=False,
+                               get_label='locality')
+    house_num = StringField('House number', validators=[DataRequired()])
+    bhk = StringField('BHK', validators=[DataRequired()])
+    rent = StringField('Rent amount', validators=[DataRequired()])
+    advance = StringField('Advance amount(in Thousands)', validators=[DataRequired()])
+    submit = SubmitField('Add House')

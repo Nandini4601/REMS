@@ -1,10 +1,9 @@
 from flask import render_template, flash, redirect, url_for, request, g
 from rems import app, db
-from rems.forms import LoginForm, EmployeeAddForm
+from rems.forms import LoginForm, EmployeeAddForm, HouseAddForm
 from flask_login import current_user, login_user, logout_user, login_required
-from rems.models import User, Employee
+from rems.models import User, Employee, House
 from werkzeug.urls import url_parse
-
 
 
 @app.route('/')
@@ -47,13 +46,28 @@ def logout():
 def add_tenant():
     return render_template('tenants.html')
 
+
 @app.route('/addtrans')
 def add_trans():
     return render_template('transactions.html')
 
-@app.route('/addhouse')
+
+@app.route('/addhouse', methods=['GET', 'POST'])
 def add_house():
-    return render_template('houses.html')
+    form = HouseAddForm()
+    if form.validate_on_submit():
+        house = House(house_num=form.house_num.data,
+                      bhk=form.bhk.data,
+                      rent=form.rent.data,
+                      advance=form.advance.data,
+                      vacancy=False,
+                      apt_id=form.apt_num.data.id,
+                      )
+        db.session.add(house)
+        db.session.commit()
+        flash('Successfully added new house')
+        return redirect(url_for('home2'))
+    return render_template('houses.html', form=form)
 
 
 @app.route('/addemp', methods=['GET', 'POST'])
