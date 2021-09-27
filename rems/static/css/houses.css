@@ -61,6 +61,11 @@
     width: 50%;
     cursor: pointer;
 }
+
+.btnRegister:hover{
+
+  background-color: #8C0000;
+}
 .register .nav-tabs{
     margin-top: 3%;
     border: none;

@@ -6,60 +6,56 @@
 {% endblock %}
 {% block content %}
 <div class="container register">
-    <div class="row">
-        <div class="col-md-3 register-left">
-            <h3 class="register-heading" style="color:#fff ">Houses data entry page</h3>
-        </div>
-        <div class="col-md-9 register-right">
+  <div class="row">
+    <div class="col-md-3 register-left">
+      <h3 class="register-heading" style="color:#fff ">Houses data entry page</h3>
+    </div>
+    <div class="col-md-9 register-right">
 
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <h3 class="register-heading2">Enter the data here</h3>
-                    <div class="row register-form">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <select class="form-control" name="">
-                                    <option value="">choose Apartment</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
-                            </div>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <h3 class="register-heading2">Enter the data here</h3>
+          <div class="row register-form">
+            <div class="col-md-6">
+              <div class="form-group">
+                <select class="form-control" name="">
+                  <option value="">choose Apartment</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </div>
 
-                            <div class="form-group">
-                                <input type="text" name="country_code" class="form-control" title="Error Message"
-                                       placeholder="House number" pattern="[1-9]{1}[0-9]{9}">
-                            </div>
+              <div class="form-group">
+                <input type="text" name="country_code" class="form-control" title="Error Message" placeholder="House number" pattern="[1-9]{1}[0-9]{9}">
+              </div>
 
-                            <div class="form-group">
-                                <input type="text" name="country_code" class="form-control" title="Error Message"
-                                       placeholder="BHK" pattern="[1-9]{1}[0-9]{9}">
-                            </div>
+              <div class="form-group">
+                <input type="text" name="country_code" class="form-control" title="Error Message" placeholder="BHK" pattern="[1-9]{1}[0-9]{9}">
+              </div>
 
-                            <div class="form-group">
-                                <input type="text" name="country_code" class="form-control" title="Error Message"
-                                       placeholder="Rent" pattern="[1-9]{1}[0-9]{9}">
-                            </div>
+              <div class="form-group">
+                <input type="text" name="country_code" class="form-control" title="Error Message" placeholder="Rent" pattern="[1-9]{1}[0-9]{9}">
+              </div>
 
-                            <div class="form-group">
-                                <input type="text" name="country_code" class="form-control" title="Error Message"
-                                       placeholder="Advance Amount" pattern="[1-9]{1}[0-9]{9}">
-                            </div>
+              <div class="form-group">
+                <input type="text" name="country_code" class="form-control" title="Error Message" placeholder="Advance Amount" pattern="[1-9]{1}[0-9]{9}">
+              </div>
 
-                            <div class="form-group">
-                                <select class="form-control" name="">
-                                    <option value="">vacancy status</option>
-                                    <option value="Available">Available</option>
-                                    <option value="Not Available">Not Available</option>
-                                </select>
-                            </div>
-
-                        </div>
-
-
-                        <input type="submit" class="btnRegister" value="Add"/>
-                    </div>
-                </div>
+              <div class="form-group">
+                <select class="form-control" name="">
+                  <option value="">vacancy status</option>
+                  <option value="Available">Available</option>
+                  <option value="Not Available">Not Available</option>
+                </select>
+              </div>
+              <input type="submit" class="btnRegister" value="Add" />
             </div>
+
+
+
+          </div>
         </div>
-        {% endblock %}
+      </div>
+    </div>
+    {% endblock %}
