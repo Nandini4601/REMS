@@ -35,6 +35,6 @@ class HouseAddForm(FlaskForm):
                                get_label='locality')
     house_num = StringField('House number', validators=[DataRequired()])
     bhk = StringField('BHK', validators=[DataRequired()])
-    rent = StringField('Rent amount', validators=[DataRequired()])
+    rent = StringField('Rent amount(in Thousands)', validators=[DataRequired()])
     advance = StringField('Advance amount(in Thousands)', validators=[DataRequired()])
     submit = SubmitField('Add House')
