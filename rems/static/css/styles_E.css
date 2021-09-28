@@ -39,7 +39,7 @@ h3{
 }
 #title{
   text-align: center;
-  background-color: #492F10;
+
 }
 
 #Add_Data{
@@ -72,11 +72,12 @@ h3{
 
 .navbar{
   padding: 1%;
+  background-color: #492F10;
 }
 
 .navbar-brand{
   font-family: "Ubuntu";
-  font-size: 2.5rem;
+  font-size: 1.6rem;
   font-weight: bold;
 }
 

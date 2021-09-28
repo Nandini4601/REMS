@@ -1,16 +1,17 @@
 #title{
   text-align: center;
   /* background: -webkit-linear-gradient(right, #7D1935, #90AACB); */
-  background-color:#7D1935;
+
 }
 
 .navbar{
   padding: 1%;
+  background-color:#7D1935;
 }
 
 .navbar-brand{
   font-family: "Ubuntu";
-  font-size: 2.5rem;
+  font-size: 1.4rem;
   font-weight: bold;
 }
 
