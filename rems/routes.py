@@ -83,6 +83,10 @@ def house(area):
 def add_trans():
     return render_template('transactions.html')
 
+@app.route('/remtenant')
+def rem_tenant():
+    return render_template('tenants_rm.html')
+
 
 @app.route('/addhouse', methods=['GET', 'POST'])
 def add_house():
