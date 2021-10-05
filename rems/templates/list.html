@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block heading %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/tenants.css') }}">
+{% endblock %}
+
+{% block content %}
+
+    <h2 class="section-heading">Vacancy List of all Apartments</h2>
+    <p> Affordable price for houses</p>
+
+    <table class="table table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Type of Service</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>abc</td>
+          <td>  <button type="button" class="btn btn-danger btn-lg">Electrician</button>  </td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>def</td>
+          <td>  <button type="button" class="btn btn-danger btn-lg">Plumber</button>  </td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>ghi</td>
+          <td>  <button type="button" class="btn btn-danger btn-lg">Carpenter</button>  </td>
+        </tr>
+        <tr>
+          <th scope="row">4</th>
+          <td>jkl</td>
+          <td>  <button type="button" class="btn btn-danger btn-lg">Painter</button>  </td>
+        </tr>
+        <tr>
+          <th scope="row">5</th>
+          <td>mno</td>
+          <td>  <button type="button" class="btn btn-danger btn-lg">House keeper</button>  </td>
+        </tr>
+        <tr>
+          <th scope="row">6</th>
+          <td>pqr</td>
+          <td>  <button type="button" class="btn btn-danger btn-lg">Manager</button>  </td>
+        </tr>
+        <tr>
+          <th scope="row">7</th>
+          <td>stu</td>
+          <td>  <button type="button" class="btn btn-danger btn-lg">Marketing Executive</button>  </td>
+        </tr>
+        <tr>
+          <th scope="row">8</th>
+          <td>vwx</td>
+          <td>  <button type="button" class="btn btn-danger btn-lg">Owner</button>  </td>
+        </tr>
+
+      </tbody>
+    </table>
+{% endblock %}

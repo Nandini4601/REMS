@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block heading %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/rem_employee.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'list.html') }}">
+<title>Employee Remove page</title>
+
+{% endblock %}
+
+{% block content %}
+<div class="container register">
+  <div class="row">
+    <div class="col-md-3 register-left">
+      <h3 class="register-heading" style="color:#fff ">Employees Data Remove page</h3>
+    </div>
+    <div class="col-md-9 register-right">
+
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <h3 class="register-heading2">Choose the Employee</h3>
+          <div class="row register-form">
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-7">
+                    <div class="d-grid gap-5 d-md-flex justify-content-md-end">
+                      <button type="button" class="btnRegister">Electrician</button>
+                      <button type="button" class="btnRegister">Plumber</button>
+                      <button type="button" class="btnRegister">Carpenter</button>
+                      <button type="button" class="btnRegister">Painter</button>
+                      <button type="button" class="btnRegister">House keeper</button>
+                      <button type="button" class="btnRegister">Manager</button>
+                      <button type="button" class="btnRegister">Marketing Executive</button>
+                      <button type="button" class="btnRegister">Owner</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
