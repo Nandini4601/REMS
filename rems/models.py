@@ -31,6 +31,16 @@ class Service(db.Model):
         return '<Service {}>'.format(self.service_type)
 
 
+class Types(db.Model):
+    __tablename__ = 'types'
+    id = db.Column(db.Integer, primary_key=True)
+    transaction_type = db.Column(db.String(25), unique=True)
+    transactions = db.relationship("Transaction", uselist=False, backref="types")
+
+    def __repr__(self):
+        return '<Transaction type {}>'.format(self.transaction_type)
+
+
 class Apartment(db.Model):
     __tablename__ = 'apartment'
     id = db.Column(db.Integer, primary_key=True)
