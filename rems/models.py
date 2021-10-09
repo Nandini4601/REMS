@@ -16,6 +16,7 @@ class Employee(db.Model):
     gender = db.Column(db.String(10), index=True, unique=False)
     service_id = db.Column(db.Integer, db.ForeignKey('service.id'))
     user = db.relationship("User", uselist=False, backref="employee")
+    receiver = db.relationship("Transaction", uselist=False, backref="employee")
 
     def __repr__(self):
         return '<Employee {}>   '.format(self.fname)
@@ -39,6 +40,19 @@ class Types(db.Model):
 
     def __repr__(self):
         return '<Transaction type {}>'.format(self.transaction_type)
+
+class Transaction(db.Model):
+    __tablename__ = 'transaction'
+    id = db.Column(db.Integer, primary_key=True)
+    type_id = db.Column(db.Integer, db.ForeignKey('types.id'))
+    dot = db.Column(db.DateTime, nullable=False) #date of transaction
+    emp_id = db.Column(db.Integer, db.ForeignKey('employee.id'))
+    ten_id = db.Column(db.Integer, db.ForeignKey('tenant.id'))
+    amt = db.Column(db.String(4), unique=False)
+    desc = db.Column(db.String(40), unique=False)
+
+    def __repr__(self):
+        return '<Sent {}>   '.format(self.amt)
 
 
 class Apartment(db.Model):
@@ -78,6 +92,7 @@ class Tenant(db.Model):
     dob = db.Column(db.DateTime, nullable=False)
     Spouse_num = db.Column(db.String(10), unique=False, nullable=True)
     house_id = db.Column(db.Integer, db.ForeignKey('house.id'))
+    sender = db.relationship("Transaction", uselist=False, backref="tenant")
 
     def __repr__(self):
         return '<Tenant {}>'.format(self.fname)
