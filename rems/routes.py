@@ -86,7 +86,7 @@ def add_trans():
 
 
 @app.route('/addtrans/<area>')
-def house(area):
+def house_trans(area):
     apt_num = Apartment.query.filter_by(locality=area).first().id
     houses = House.query.filter_by(apt_id=apt_num).all()
 
@@ -102,7 +102,7 @@ def house(area):
 
 
 @app.route('/addtenant/<house_id>')
-def house(house_id):
+def tenant(house_id):
     house_num = House.query.filter_by(id=house_id).first().id
     tenants = Tenant.query.filter_by(house_id=house_num).all()
 
