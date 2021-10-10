@@ -3,8 +3,48 @@
   <head>
     <meta charset="utf-8">
     <title>Tenants list</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/tenant_list.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;900&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+
   </head>
   <body>
+<h1>List of tenants in the House</h1>
 
+  <section class="white-section" id="">
+
+    <h2 class="section-heading"> List of all Tenants in the house</h2>
+    <p> Affordable price for houses</p>
+
+    <table class="table table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">BHK</th>
+          <th scope="col">Location</th>
+          <th scope="col">Rent</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>3 BHK</td>
+          <td>Theni</td>
+          <td>@tbd</td>
+          <td><a href="#">more info</a></td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>2 BHK</td>
+          <td>Madurai</td>
+          <td>@tbd</td>
+          <td><a href="#">more info</a></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </section>
   </body>
 </html>
