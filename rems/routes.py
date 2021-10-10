@@ -99,6 +99,10 @@ def rem_houses():
 def list():
     return render_template('list.html')
 
+@app.route('/tenant_list')
+def tenant_list():
+    return render_template('tenant_list.html')
+
 
 @app.route('/addhouse', methods=['GET', 'POST'])
 def add_house():

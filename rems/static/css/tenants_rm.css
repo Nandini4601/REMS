@@ -7,3 +7,15 @@
 .card-registration .select-arrow {
   top: 13px;
 }
+/* a{
+  color: #000;
+  text-decoration: none;
+} */
+
+.anchor{
+  color: #fff;
+  text-decoration: none;
+}
+.anchor:hover{
+  color: #F6F6F6;
+}

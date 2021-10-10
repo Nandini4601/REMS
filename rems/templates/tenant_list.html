@@ -10,36 +10,50 @@
 
   </head>
   <body>
-<h1>List of tenants in the House</h1>
+    <section id="title">
+      <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <a class="navbar-brand" href="{{ url_for('home2') }}">Employee Home Page</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('index') }}">Apartment page</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('logout') }}">Log out</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+    </section>
+<h1>List of all tenants in the House</h1>
 
   <section class="white-section" id="">
 
-    <h2 class="section-heading"> List of all Tenants in the house</h2>
-    <p> Affordable price for houses</p>
+    <!-- <h2 class="section-heading"> List of all Tenants in the house</h2> -->
 
     <table class="table table-hover">
       <thead class="table-dark">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">BHK</th>
-          <th scope="col">Location</th>
-          <th scope="col">Rent</th>
+          <th scope="col">Names</th>
           <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <th scope="row">1</th>
-          <td>3 BHK</td>
-          <td>Theni</td>
-          <td>@tbd</td>
+          <td>Ashwin</td>
           <td><a href="#">more info</a></td>
         </tr>
         <tr>
           <th scope="row">2</th>
-          <td>2 BHK</td>
-          <td>Madurai</td>
-          <td>@tbd</td>
+          <td>Shwetha</td>
           <td><a href="#">more info</a></td>
         </tr>
 
