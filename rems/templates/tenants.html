@@ -11,6 +11,13 @@
   });
 
 
+
+
+
+
+
+
+
 </script>
 
 <script type="text/javascript">
@@ -21,24 +28,11 @@
   });
 
 
-</script>
 
-<script>
-  var subjectObject = {
-    1: ['G1','G2','F1'],
-    2: ['G1','G2','F1','F2','S1'],
-    3: ['G1','G2','F1','F2','F3','S1']
-  }
-  function changecat(value) {
-         if (value.length == 0) document.getElementById("houses").innerHTML = "<option></option>";
-         else {
-             var catOptions = "";
-             for (categoryId in subjectObject[value]) {
-                 catOptions += "<option>" + subjectObject[value][categoryId] + "</option>";
-             }
-             document.getElementById("houses").innerHTML = catOptions;
-         }
-     }
+
+
+
+
 
 
 </script>
@@ -60,72 +54,172 @@
                     <h3 class="register-heading2">Enter the data here</h3>
                     <div class="row register-form">
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="First Name *" value=""/>
-                            </div>
+                            <form action="{{ url_for('add_tenant') }}" method="POST">
+                                {{ form.hidden_tag() }}
 
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Last Name *" value=""/>
-                            </div>
+                                <p>
+                                    {{ form.firstname.label }}
+                                    {{ form.firstname(class="form-control")}}
+                                    {% for error in form.firstname.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
+
+                                <p>
+                                    {{ form.lastname.label }}
+                                    {{ form.lastname(class="form-control")}}
+                                    {% for error in form.lastname.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
+
+                                <p>
+                                    {{ form.DoB.label }}
+                                    {{ form.DoB(class="form-control") }}
+                                    {% for error in form.DoB.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
+
+                                <p>
+                                    {{ form.mobile.label }}
+                                    {{ form.mobile(class="form-control") }}
+                                    {% for error in form.mobile.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
+
+                                <p>
+                                    {{ form.emer_mobile.label }}
+                                    {{ form.emer_mobile(class="form-control") }}
+                                    {% for error in form.emer_mobile.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
+
+                                <p>
+                                    {{ form.email.label }}
+                                    {{ form.email(class="form-control") }}
+                                    {% for error in form.email.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
+
+                                <p>
+                                    {{ form.spouse_mob.label }}
+                                    {{ form.spouse_mob(class="form-control") }}
+                                    {% for error in form.spouse_mob.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
+
+                                <p>
+                                    {{ form.apt_num.label }}
+                                    {{ form.apt_num }}
+                                    {% for error in form.apt_num.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                    {{ form.house_num.label }}
+                                    {{ form.house_num }}
+                                    {% for error in form.house_num.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
+
+<!--                                <p>{{ form.submit(class="btnRegister") }}</p>-->
+                                <input type="submit">
+                                <!--                            <div class="form-group">-->
+                                <!--                                <input type="text" class="form-control" placeholder="First Name *" value=""/>-->
+                                <!--                            </div>-->
+
+                                <!--                            <div class="form-group">-->
+                                <!--                                <input type="text" class="form-control" placeholder="Last Name *" value=""/>-->
+                                <!--                            </div>-->
 
 
-                            <div class="form-group">
-                                <input id="txtDate" type="text" class="form-control date-input"
-                                       placeholder="Date of birth" readonly="readonly"/>
+                                <!--                            <div class="form-group">-->
+                                <!--                                <input id="txtDate" type="text" class="form-control date-input"-->
+                                <!--                                       placeholder="Date of birth" readonly="readonly"/>-->
 
-                            </div>
-
-
-                            <div class="form-group">
-                                <input type="text" name="country_code" class="form-control" title="Error Message"
-                                       placeholder="Phone number" pattern="[1-9]{1}[0-9]{9}">
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" name="country_code" class="form-control" title="Error Message"
-                                       placeholder="Emergency Phone number" pattern="[1-9]{1}[0-9]{9}">
-                            </div>
-                            <div class="form-group">
-
-                                <h5 style="color:#6D8299;">If Married Enter spouse's phone number</h5>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" name="country_code" class="form-control" title="Error Message"
-                                       placeholder="Phone number" pattern="[1-9]{1}[0-9]{9}">
-                            </div>
-
-                        </div>
-                        <div class="col-md-6">
+                                <!--                            </div>-->
 
 
-                            <legend>House Details</legend>
+                                <!--                            <div class="form-group">-->
+                                <!--                                <input type="text" name="country_code" class="form-control" title="Error Message"-->
+                                <!--                                       placeholder="Phone number" pattern="[1-9]{1}[0-9]{9}">-->
+                                <!--                            </div>-->
 
-                            <!-- Text input-->
-                            <div class="form-group">
-                                <!-- <label class="col-sm-2 control-label" for="textinput">Line 1</label> -->
+                                <!--                            <div class="form-group">-->
+                                <!--                                <input type="text" name="country_code" class="form-control" title="Error Message"-->
+                                <!--                                       placeholder="Emergency Phone number" pattern="[1-9]{1}[0-9]{9}">-->
+                                <!--                            </div>-->
+                                <!--                            <div class="form-group">-->
 
-                                <select name="apt" id="apt" class="form-control" onchange="changecat(this.value);">
-                                    <option value="" disabled selected hidden>Apartment number</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
+                                <!--                                <h5 style="color:#6D8299;">If Married Enter spouse's phone number</h5>-->
+                                <!--                            </div>-->
 
-                            </div>
+                                <!--                            <div class="form-group">-->
+                                <!--                                <input type="text" name="country_code" class="form-control" title="Error Message"-->
+                                <!--                                       placeholder="Phone number" pattern="[1-9]{1}[0-9]{9}">-->
+                                <!--                            </div>-->
 
-                            <div class="form-group">
 
-                                <select name="houses" id="houses" class="form-control">
-                                    <option value=""disabled selected hidden>House Number</option>
-                                </select>
+                                <!--                            <legend>House Details</legend>-->
 
-                            </div>
+                                <!--                            &lt;!&ndash; Text input&ndash;&gt;-->
+                                <!--                            <div class="form-group">-->
+                                <!--                                &lt;!&ndash; <label class="col-sm-2 control-label" for="textinput">Line 1</label> &ndash;&gt;-->
 
-                            <input type="submit" class="btnRegister" value="Add"/>
+                                <!--                                <select name="apt" id="apt" class="form-control" onchange="changecat(this.value);">-->
+                                <!--                                    <option value="" disabled selected hidden>Apartment number</option>-->
+                                <!--                                    <option value="1">1</option>-->
+                                <!--                                    <option value="2">2</option>-->
+                                <!--                                    <option value="3">3</option>-->
+                                <!--                                </select>-->
+
+                                <!--                            </div>-->
+
+                                <!--                            <div class="form-group">-->
+
+                                <!--                                <select name="houses" id="houses" class="form-control">-->
+                                <!--                                    <option value=""disabled selected hidden>House Number</option>-->
+                                <!--                                </select>-->
+
+                                <!--                            </div>-->
+
+                            </form>
+                            <script>
+                                let apt_select=document.getElementById('apt_num');
+                                let house_select= document.getElementById('house_num');
+
+                                apt_select.onchange = function() {
+                                    apt = apt_select.value;
+
+
+                                    fetch('/addtenant/' + apt).then(function(response) {
+                                        response.json().then(function(data){
+                                            let optionHTML = '';
+
+                                           for (let house of data.houses){
+                                                optionHTML += '<option value=' + house.id + '>' + house.house_num + '</option>';
+                                           }
+
+                                           house_select.innerHTML= optionHTML;
+                                        });
+                                    });
+                                    }
+
+
+
+
+
+
+                            </script>
                         </div>
                     </div>
                 </div>
-
             </div>
-            {% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}

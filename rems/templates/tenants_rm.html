@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <script>
+    var subjectObject = {
+      Theni: ['G1','G2','F1'],
+      Madurai: ['G1','G2','F1','F2','S1'],
+      Dindigul: ['G1','G2','F1','F2','F3','S1']
+    }
+    function changecat(value) {
+           if (value.length == 0) document.getElementById("housenum").innerHTML = "<option></option>";
+           else {
+               var catOptions = "";
+               for (categoryId in subjectObject[value]) {
+                   catOptions += "<option>" + subjectObject[value][categoryId] + "</option>";
+               }
+               document.getElementById("housenum").innerHTML = catOptions;
+           }
+       }
+    </script>
+
+
+</head>
+
+<body>
+  <section class="h-100 bg-dark">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col">
+          <div class="card card-registration my-4">
+            <div class="row g-0">
+              <div class="col-md-6 col-12">
+                <img src="https://www.losangelespropertymanagementgroup.com/wp-content/uploads/2018/04/scot-6.png" alt="Sample photo" class="img-fluid" style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+              </div>
+              <div class="col-md-6 col-12">
+                <div class="card-body p-md-5 text-black">
+                  <h3 class="mb-5 text-uppercase">Tenant Removal page</h3>
+
+                  <div class="form-outline mb-4">
+                    <!-- <input type="text" id="form3Example8" class="form-control form-control-lg" /> -->
+                    <select id="location" class="form-control form-control-lg" name="location" onchange="changecat(this.value);">
+                      <option value=""  disabled selected hidden>Choose location</option>
+                      <option value="Theni" >Theni</option>
+                      <option value="Madurai" >Madurai</option>
+                      <option value="Dindigul" >Dindigul</option>
+                    </select>
+
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <select id="housenum" name="housenum" class="form-control form-control-lg">
+                      <option value=""  disabled selected hidden>House number</option>
+                    </select>
+                  </div>
+
+
+                  <div class="d-flex justify-content-end pt-3">
+                    <button type="button" class="btn btn-warning btn-lg ms-2">Submit </button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+
+</html>

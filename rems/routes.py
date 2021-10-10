@@ -1,8 +1,8 @@
-from flask import render_template, flash, redirect, url_for, request, g
+from flask import render_template, flash, redirect, url_for, request, jsonify
 from rems import app, db
-from rems.forms import LoginForm, EmployeeAddForm, HouseAddForm
+from rems.forms import LoginForm, EmployeeAddForm, HouseAddForm, TenantAddForm
 from flask_login import current_user, login_user, logout_user, login_required
-from rems.models import User, Employee, House
+from rems.models import User, Employee, House, Apartment, Tenant
 from werkzeug.urls import url_parse
 
 
@@ -42,14 +42,62 @@ def logout():
     return redirect(url_for('index'))
 
 
-@app.route('/addtenant')
+@app.route('/addtenant', methods=['GET', 'POST'])
 def add_tenant():
-    return render_template('tenants.html')
+    form = TenantAddForm()
+    form.house_num.choices = [(house.id, house.house_num) for house in House.query.all()]
+    if form.validate_on_submit():
+        tenant = Tenant(fname=form.firstname.data,
+                        lname=form.lastname.data,
+                        mob_num=form.mobile.data,
+                        emer_num=form.emer_mobile.data,
+                        email=form.email.data,
+                        dob=form.DoB.data,
+                        Spouse_num=form.spouse_mob.data,
+                        house_id=form.house_num.data
+                        )
+        db.session.add(tenant)
+        db.session.commit()
+        flash('Successfully added new tenant')
+        return redirect(url_for('home2'))
+    return render_template('tenants.html', form=form)
+
+
+@app.route('/addtenant/<area>')
+def house(area):
+    apt_num = Apartment.query.filter_by(locality=area).first().id
+    houses = House.query.filter_by(apt_id=apt_num).all()
+
+    houseArray = []
+
+    for house in houses:
+        houseObj = {}
+        houseObj['id'] = house.id
+        houseObj['house_num'] = house.house_num
+        houseArray.append(houseObj)
+
+    return jsonify({'houses': houseArray})
 
 
 @app.route('/addtrans')
 def add_trans():
     return render_template('transactions.html')
+
+@app.route('/remtenant')
+def rem_tenant():
+    return render_template('tenants_rm.html')
+
+@app.route('/rememployee')
+def rem_employee():
+    return render_template('rem_employee.html')
+
+@app.route('/remhouses')
+def rem_houses():
+    return render_template('rem_houses.html')
+
+@app.route('/list')
+def list():
+    return render_template('list.html')
 
 
 @app.route('/addhouse', methods=['GET', 'POST'])

@@ -1,0 +1,17 @@
+.heading{
+  font-family: "Montserrat";
+  font-weight: bold;
+  text-align: center;
+  background-color: #B1FFFD;
+  margin: 100px 0 100px 0 ;
+  padding: 70px 0;
+}
+
+.icfa{
+  color: #63B4B8;
+  padding-right: 10px;
+}
+.btn{
+  float: right;
+  margin: 5% 3% 5% 0;
+}
