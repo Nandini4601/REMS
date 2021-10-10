@@ -87,6 +87,18 @@ def add_trans():
 def rem_tenant():
     return render_template('tenants_rm.html')
 
+@app.route('/rememployee')
+def rem_employee():
+    return render_template('rem_employee.html')
+
+@app.route('/remhouses')
+def rem_houses():
+    return render_template('rem_houses.html')
+
+@app.route('/list')
+def list():
+    return render_template('list.html')
+
 
 @app.route('/addhouse', methods=['GET', 'POST'])
 def add_house():

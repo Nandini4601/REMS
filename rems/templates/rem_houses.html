@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block heading %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/rem_houses.css') }}">
+
+<script>
+  var subjectObject = {
+    Theni: ['G1', 'G2', 'F1'],
+    Madurai: ['G1', 'G2', 'F1', 'F2', 'S1'],
+    Dindugal: ['G1', 'G2', 'F1', 'F2', 'F3', 'S1']
+  }
+
+  function changecat(value) {
+    if (value.length == 0) document.getElementById("houses").innerHTML = "<option></option>";
+    else {
+      var catOptions = "";
+      for (categoryId in subjectObject[value]) {
+        catOptions += "<option>" + subjectObject[value][categoryId] + "</option>";
+      }
+      document.getElementById("houses").innerHTML = catOptions;
+    }
+  }
+</script>
+
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container register">
+  <h3 class="register-heading" style="color:#CD113B ">Houses Data Remove page</h3>
+</div>
+
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <h3 class="register-heading2">Enter the House Details here</h3>
+          <div class="row register-form">
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <!-- <label class="col-sm-2 control-label" for="textinput">Line 1</label> -->
+                <select name="apt" id="apt" class="form-control" onchange="changecat(this.value);">
+                  <option value="" disabled selected hidden>Apartment Place</option>
+                  <option value="Theni">Theni</option>
+                  <option value="Madurai">Madurai</option>
+                  <option value="Dindugal">Dindugal</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+
+                <select name="houses" id="houses" class="form-control">
+                  <option value="" disabled selected hidden>House Number</option>
+                </select>
+
+              </div>
+
+              <input type="submit" class="btnRegister" value="Remove" />
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      {% endblock %}
