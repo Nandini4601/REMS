@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, SelectField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
-from rems.models import Service, Employee, Apartment, House
+from rems.models import Service, Employee, Apartment, House, Transaction, Types
 from wtforms.fields.html5 import DateField
 
 
@@ -51,3 +51,20 @@ class TenantAddForm(FlaskForm):
     apt_num = SelectField('Apartment', choices=['Theni', 'Madurai', 'Dindigul'])
     house_num = SelectField('House')
     submit = SubmitField('Add Tenant')
+
+
+class TransactionAddForm(FlaskForm):
+    types_list = QuerySelectField('Choose type', query_factory=lambda: Types.query, allow_blank=False,
+                                  get_label='transaction_type')
+    Dot = DateField(validators=[DataRequired()], label='Date of Transaction')
+    employee_list = QuerySelectField('Choose type',
+                                     query_factory=lambda: Employee.query.filter(
+                                         Employee.service_id.in_((6, 7, 8))).all(),
+                                     allow_blank=False,
+                                     get_label='employee_receiver')
+    apt_num = SelectField('Apartment', choices=['Theni', 'Madurai', 'Dindigul'])
+    house_num = SelectField('House')
+    tenant_id = SelectField('Tenants')
+    amount = StringField('Amount', validators=[DataRequired()])
+    description = StringField('Description', validators=[DataRequired()])
+    submit = SubmitField('Add Transaction')

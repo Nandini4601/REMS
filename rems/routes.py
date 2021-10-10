@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, url_for, request, jsonify
 from rems import app, db
-from rems.forms import LoginForm, EmployeeAddForm, HouseAddForm, TenantAddForm
+from rems.forms import LoginForm, EmployeeAddForm, HouseAddForm, TenantAddForm, TransactionAddForm
 from flask_login import current_user, login_user, logout_user, login_required
 from rems.models import User, Employee, House, Apartment, Tenant
 from werkzeug.urls import url_parse
@@ -81,7 +81,41 @@ def house(area):
 
 @app.route('/addtrans')
 def add_trans():
-    return render_template('transactions.html')
+    form = TransactionAddForm()
+    return render_template('transactions.html', form=form)
+
+
+@app.route('/addtrans/<area>')
+def house(area):
+    apt_num = Apartment.query.filter_by(locality=area).first().id
+    houses = House.query.filter_by(apt_id=apt_num).all()
+
+    houseArray = []
+
+    for house in houses:
+        houseObj = {}
+        houseObj['id'] = house.id
+        houseObj['house_num'] = house.house_num
+        houseArray.append(houseObj)
+
+    return jsonify({'houses': houseArray})
+
+
+@app.route('/addtenant/<house_id>')
+def house(house_id):
+    house_num = House.query.filter_by(id=house_id).first().id
+    tenants = Tenant.query.filter_by(house_id=house_num).all()
+
+    tenantArray = []
+
+    for tenant in tenants:
+        tenantObj = {}
+        tenantObj['id'] = tenant.id
+        tenantObj['tenant_name'] = tenant.fname
+        tenantArray.append(tenantObj)
+
+    return jsonify({'tenants': tenantArray})
+
 
 @app.route('/remtenant')
 def rem_tenant():

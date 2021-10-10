@@ -24,13 +24,16 @@ from rems import db
 #      print(h.id,h.house_num,h.apt_id)
 
 '''To populate the types db'''
-types = []
-types.append(Types('Rent'))
-types.append(Types('Electricity Bill'))
-types.append(Types('Maintenance'))
-types.append(Types('Plumbing'))
-types.append(Types('Painting'))
-types.append(Types('Other'))
-for type in types:
-    db.session.add(types)
-db.session.commit()
+# types = []
+# types.append(Types(transaction_type='Rent'))
+# types.append(Types(transaction_type='Electricity Bill'))
+# types.append(Types(transaction_type='Maintenance'))
+# types.append(Types(transaction_type='Plumbing'))
+# types.append(Types(transaction_type='Painting'))
+# types.append(Types(transaction_type='Other'))
+# for type in types:
+#     db.session.add(type)
+# db.session.commit()
+
+for t in Types.query:
+    print(t)

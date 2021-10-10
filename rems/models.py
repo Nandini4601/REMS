@@ -41,11 +41,12 @@ class Types(db.Model):
     def __repr__(self):
         return '<Transaction type {}>'.format(self.transaction_type)
 
+
 class Transaction(db.Model):
     __tablename__ = 'transaction'
     id = db.Column(db.Integer, primary_key=True)
     type_id = db.Column(db.Integer, db.ForeignKey('types.id'))
-    dot = db.Column(db.DateTime, nullable=False) #date of transaction
+    dot = db.Column(db.DateTime, nullable=False)  # date of transaction
     emp_id = db.Column(db.Integer, db.ForeignKey('employee.id'))
     ten_id = db.Column(db.Integer, db.ForeignKey('tenant.id'))
     amt = db.Column(db.String(4), unique=False)
@@ -113,6 +114,7 @@ class User(UserMixin, db.Model):
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
+
 
 @login.user_loader
 def load_user(id):
