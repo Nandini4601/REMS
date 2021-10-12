@@ -30,36 +30,42 @@
   <h3 class="register-heading" style="color:#CD113B ">Houses Data Remove page</h3>
 </div>
 
-      <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-          <h3 class="register-heading2">Enter the House Details here</h3>
-          <div class="row register-form">
-            <div class="col-md-6">
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
-              <div class="form-group">
-                <!-- <label class="col-sm-2 control-label" for="textinput">Line 1</label> -->
-                <select name="apt" id="apt" class="form-control" onchange="changecat(this.value);">
-                  <option value="" disabled selected hidden>Apartment Place</option>
-                  <option value="Theni">Theni</option>
-                  <option value="Madurai">Madurai</option>
-                  <option value="Dindugal">Dindugal</option>
-                </select>
-              </div>
+    <section class="box">
 
-              <div class="form-group">
+      <h3 class="register-heading2">Enter the House Details here</h3>
+      <div class="register-form">
+      
 
-                <select name="houses" id="houses" class="form-control">
-                  <option value="" disabled selected hidden>House Number</option>
-                </select>
+          <div class="form-group">
+            <!-- <label class="col-sm-2 control-label" for="textinput">Line 1</label> -->
+            <select name="apt" id="apt" class="form-control" onchange="changecat(this.value);">
+              <option value="" disabled selected hidden>Apartment Place</option>
+              <option value="Theni">Theni</option>
+              <option value="Madurai">Madurai</option>
+              <option value="Dindugal">Dindugal</option>
+            </select>
+          </div>
 
-              </div>
+          <div class="form-group">
 
-              <input type="submit" class="btnRegister" value="Remove" />
-
-            </div>
+            <select name="houses" id="houses" class="form-control">
+              <option value="" disabled selected hidden>House Number</option>
+            </select>
 
           </div>
-        </div>
+          <div class="form-group">
+            <input type="submit" class="btnRegister btn-lg" value="Remove" />
+          </div>
+
+
+
 
       </div>
-      {% endblock %}
+    </section>
+  </div>
+
+</div>
+{% endblock %}

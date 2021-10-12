@@ -1,72 +1,74 @@
 {% extends 'base.html' %}
 {% block heading %}
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/tenants.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/list.css') }}">
 {% endblock %}
 
 {% block content %}
 
-    <h2 class="section-heading">Vacancy List of all Apartments</h2>
-    <p> Affordable price for houses</p>
+    <!-- <h2 class="section-heading">Vacancy List of all Apartments</h2>
+    <p> Affordable price for houses</p> -->
+<section class="white-section">
+  <table class="table table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Type of Service</th>
+        <th scope="col">Remove_Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>abc</td>
+        <td>Electrician</td>
+        <td>  <button type="button" class="btn btn-danger ">Remove</button>  </td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>def</td>
+        <td>Plumber</td>
+        <td>  <button type="button" class="btn btn-danger ">Remove</button>  </td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>ghi</td>
+        <td>Carpenter</td>
+        <td>  <button type="button" class="btn btn-danger ">Remove</button>  </td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td>jkl</td>
+        <td>Painter</td>
+        <td>  <button type="button" class="btn btn-danger ">Remove</button>  </td>
+      </tr>
+      <tr>
+        <th scope="row">5</th>
+        <td>mno</td>
+        <td>House keeper</td>
+        <td>  <button type="button" class="btn btn-danger ">Remove</button>  </td>
+      </tr>
+      <tr>
+        <th scope="row">6</th>
+        <td>pqr</td>
+        <td>Manager</td>
+        <td>  <button type="button" class="btn btn-danger ">Remove</button>  </td>
+      </tr>
+      <tr>
+        <th scope="row">7</th>
+        <td>stu</td>
+        <td>Marketing Executive</td>
+        <td>  <button type="button" class="btn btn-danger ">Remove</button>  </td>
+      </tr>
+      <tr>
+        <th scope="row">8</th>
+        <td>vwx</td>
+        <td>Owner</td>
+        <td>  <button type="button" class="btn btn-danger">Remove</button>  </td>
+      </tr>
 
-    <table class="table table-hover">
-      <thead class="table-dark">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Name</th>
-          <th scope="col">Type of Service</th>
-          <th scope="col">Remove_Data</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>abc</td>
-          <td>Electrician</td>
-          <td>  <button type="button" class="btn btn-danger btn-lg">Remove</button>  </td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>def</td>
-          <td>Plumber</td>
-          <td>  <button type="button" class="btn btn-danger btn-lg">Remove</button>  </td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>ghi</td>
-          <td>Carpenter</td>
-          <td>  <button type="button" class="btn btn-danger btn-lg">Remove</button>  </td>
-        </tr>
-        <tr>
-          <th scope="row">4</th>
-          <td>jkl</td>
-          <td>Painter</td>
-          <td>  <button type="button" class="btn btn-danger btn-lg">Remove</button>  </td>
-        </tr>
-        <tr>
-          <th scope="row">5</th>
-          <td>mno</td>
-          <td>House keeper</td>
-          <td>  <button type="button" class="btn btn-danger btn-lg">Remove</button>  </td>
-        </tr>
-        <tr>
-          <th scope="row">6</th>
-          <td>pqr</td>
-          <td>Manager</td>
-          <td>  <button type="button" class="btn btn-danger btn-lg">Remove</button>  </td>
-        </tr>
-        <tr>
-          <th scope="row">7</th>
-          <td>stu</td>
-          <td>Marketing Executive</td>
-          <td>  <button type="button" class="btn btn-danger btn-lg">Remove</button>  </td>
-        </tr>
-        <tr>
-          <th scope="row">8</th>
-          <td>vwx</td>
-          <td>Owner</td>
-          <td>  <button type="button" class="btn btn-danger btn-lg">Remove</button>  </td>
-        </tr>
+    </tbody>
+  </table>
+</section>
 
-      </tbody>
-    </table>
 {% endblock %}

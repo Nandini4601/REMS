@@ -8,12 +8,14 @@
     margin-top: 10%;
     border: none;
     border-radius: 1.5rem;
-    padding: 2%;
+    
     background: #CD113B;
     color: #fff;
     font-weight: 600;
-    width: 30%;
+    width: 70%;
     cursor: pointer;
+    text-align: center;
+    margin-right: 17%;
 }
 
 .btnRegister:hover{
@@ -66,8 +68,16 @@
     font-family: "Montserrat";
     font-weight: normal;
 }
+.box{
+text-align: center;
+}
 
 .form-group{
-  margin-left: 12%;
-  width: 50%;
+  width: 40%;
 }
+.register-form{
+  margin-left: 500px;
+}
+/* .col-md-12{
+margin: auto;
+} */
