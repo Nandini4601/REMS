@@ -13,15 +13,15 @@ from rems import db
 
 
 '''To verify foreign key in tenants'''
-# t1=Tenant.query.first()
+t=Tenant.query
 # print(t1.fname,t1.house_id)
 
-# for t in Tenant.query:
-#      # db.session.delete(t)
-#      # db.session.commit()
-#      print(t.fname, t.house_id)
-#      h=House.query.filter_by(id=t.house_id).first()
-#      print(h.id,h.house_num,h.apt_id)
+for t in Tenant.query:
+     # db.session.delete(t)
+     # db.session.commit()
+     print(t.fname, t.house_id)
+     h=House.query.filter_by(id=t.house_id).first()
+     print(h.id,h.house_num,h.apt_id)
 
 '''To populate the types db'''
 # types = []
@@ -35,5 +35,8 @@ from rems import db
 #     db.session.add(type)
 # db.session.commit()
 
-for t in Types.query:
-    print(t)
+# for t in Types.query:
+#     print(t)
+
+'''Populating tenants'''
+

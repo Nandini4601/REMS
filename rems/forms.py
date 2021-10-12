@@ -47,7 +47,7 @@ class TenantAddForm(FlaskForm):
     mobile = StringField('Mobile Number', validators=[DataRequired()])
     emer_mobile = StringField('Emergency mobile Number', validators=[DataRequired()])
     email = StringField('Email Address', validators=[DataRequired()])
-    spouse_mob = StringField('Spouse Mobile Number', validators=[DataRequired()])
+    spouse_mob = StringField('Spouse Mobile Number')
     apt_num = SelectField('Apartment', choices=['Theni', 'Madurai', 'Dindigul'])
     house_num = SelectField('House')
     submit = SubmitField('Add Tenant')

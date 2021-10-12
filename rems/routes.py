@@ -82,6 +82,7 @@ def house(area):
 @app.route('/addtrans')
 def add_trans():
     form = TransactionAddForm()
+
     return render_template('transactions.html', form=form)
 
 
@@ -101,10 +102,9 @@ def house_trans(area):
     return jsonify({'houses': houseArray})
 
 
-@app.route('/addtenant/<house_id>')
-def tenant(house_id):
-    house_num = House.query.filter_by(id=house_id).first().id
-    tenants = Tenant.query.filter_by(house_id=house_num).all()
+@app.route('/addtransh/<id>')
+def tenant(id):
+    tenants = Tenant.query.filter_by(house_id=id).all()
 
     tenantArray = []
 
