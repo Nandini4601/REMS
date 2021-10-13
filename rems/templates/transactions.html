@@ -18,6 +18,9 @@
 
 
 
+
+
+
 </script>
 
 
@@ -52,6 +55,14 @@
                                     {{ form.Dot.label }}
                                     {{ form.Dot(class="form-control") }}
                                     {% for error in form.Dot.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </p>
+
+                                <p>
+                                    {{ form.employee_list.label }}
+                                    {{ form.employee_list(class="form-control")}}
+                                    {% for error in form.employee_list.errors %}
                                     <span style="color: red;">[{{ error }}]</span>
                                     {% endfor %}
                                 </p>
@@ -90,6 +101,7 @@
                                     {% endfor %}
                                 </p>
                                 <input type="submit">
+
                             </form>
                             <script>
                                 let apt_select=document.getElementById('apt_num');
@@ -124,6 +136,9 @@
                                         });
                                     });
                                 }
+
+
+
 
 
 

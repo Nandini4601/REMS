@@ -57,11 +57,11 @@ class TransactionAddForm(FlaskForm):
     types_list = QuerySelectField('Choose type', query_factory=lambda: Types.query, allow_blank=False,
                                   get_label='transaction_type')
     Dot = DateField(validators=[DataRequired()], label='Date of Transaction')
-    employee_list = QuerySelectField('Choose type',
+    employee_list = QuerySelectField('Choose employee',
                                      query_factory=lambda: Employee.query.filter(
-                                         Employee.service_id.in_((6, 7, 8))).all(),
+                                         Employee.service_id.in_(( 6,7,8))).all(),
                                      allow_blank=False,
-                                     get_label='employee_receiver')
+                                     get_label='fname')
     apt_num = SelectField('Apartment', choices=['Theni', 'Madurai', 'Dindigul'])
     house_num = SelectField('House')
     tenant_id = SelectField('Tenants')

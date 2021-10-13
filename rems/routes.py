@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, url_for, request, jsonify
 from rems import app, db
 from rems.forms import LoginForm, EmployeeAddForm, HouseAddForm, TenantAddForm, TransactionAddForm
 from flask_login import current_user, login_user, logout_user, login_required
-from rems.models import User, Employee, House, Apartment, Tenant
+from rems.models import User, Employee, House, Apartment, Tenant, Transaction
 from werkzeug.urls import url_parse
 
 
@@ -45,7 +45,7 @@ def logout():
 @app.route('/addtenant', methods=['GET', 'POST'])
 def add_tenant():
     form = TenantAddForm()
-    form.house_num.choices = [(house.id, house.house_num) for house in House.query.all()]
+    form.house_num.choices = [(house.id, house.house_num) for house in House.query.filter_by(apt_id=1).all()]
     if form.validate_on_submit():
         tenant = Tenant(fname=form.firstname.data,
                         lname=form.lastname.data,
@@ -58,7 +58,6 @@ def add_tenant():
                         )
         db.session.add(tenant)
         db.session.commit()
-        flash('Successfully added new tenant')
         return redirect(url_for('home2'))
     return render_template('tenants.html', form=form)
 
@@ -79,10 +78,22 @@ def house(area):
     return jsonify({'houses': houseArray})
 
 
-@app.route('/addtrans')
+@app.route('/addtrans', methods=['GET', 'POST'])
 def add_trans():
     form = TransactionAddForm()
-
+    form.house_num.choices = [(house.id, house.house_num) for house in House.query.filter_by(apt_id=1).all()]
+    form.tenant_id.choices = [(tenant.id, tenant.fname) for tenant in Tenant.query.filter_by(house_id=1).all()]
+    if form.validate_on_submit():
+        transaction = Transaction(type_id=form.types_list.data.id,
+                                  dot=form.Dot.data,
+                                  ten_id=form.tenant_id.data,
+                                  emp_id=form.employee_list.data.id,
+                                  amt=form.amount.data,
+                                  desc=form.description.data
+                                  )
+        db.session.add(transaction)
+        db.session.commit()
+        return redirect(url_for('home2'))
     return render_template('transactions.html', form=form)
 
 
@@ -135,7 +146,6 @@ def add_house():
                       )
         db.session.add(house)
         db.session.commit()
-        flash('Successfully added new house')
         return redirect(url_for('home2'))
     return render_template('houses.html', form=form)
 
@@ -154,6 +164,5 @@ def add_employee():
                        service_id=form.service_list.data.id)
         db.session.add(emp)
         db.session.commit()
-        flash('Successfully added new employee')
         return redirect(url_for('home2'))
     return render_template('employee.html', form=form)
