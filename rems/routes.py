@@ -146,11 +146,32 @@ def rem_houses():
 @app.route('/rem_list')
 def emp_list():
     headings = ("First Name", "Last Name", "mobile", "email", " ")
-    data = list()
     emps = Employee.query.filter_by(service_id=4).all()
-    for emp in emps:
-        data.append((emp.fname, emp.lname, emp.mobile, emp.email))
-    return render_template('removal_list.html', headings=headings, data=data)
+    return render_template('removal_list.html', headings=headings, data=emps)
+
+
+@app.route('/delete_emp/<int:id>')
+def delete_emp(id):
+    emp_todel = Employee.query.filter_by(id=id).first()
+    db.session.delete(emp_todel)
+    db.session.commit()
+    return render_template("ack2.html")
+
+
+@app.route('/delete_ten/<int:id>')
+def delete_ten(id):
+    ten_todel = Tenant.query.filter_by(id=id).first()
+    db.session.delete(ten_todel)
+    db.session.commit()
+    return render_template("ack2.html")
+
+
+@app.route('/delete_house/<int:id>')
+def delete_house(id):
+    house_todel = House.query.filter_by(id=id).first()
+    db.session.delete(house_todel)
+    db.session.commit()
+    return render_template("ack2.html")
 
 
 @app.route('/tenant_list')
