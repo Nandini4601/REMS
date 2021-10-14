@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, url_for, request, jsonify
 from rems import app, db
 from rems.forms import LoginForm, EmployeeAddForm, HouseAddForm, TenantAddForm, TransactionAddForm
 from flask_login import current_user, login_user, logout_user, login_required
-from rems.models import User, Employee, House, Apartment, Tenant, Transaction
+from rems.models import User, Employee, House, Apartment, Tenant, Transaction, Service
 from werkzeug.urls import url_parse
 
 
@@ -135,7 +135,8 @@ def rem_tenant():
 
 @app.route('/rememployee')
 def rem_employee():
-    return render_template('rem_employee.html')
+    services=Service.query
+    return render_template('rem_employee.html',services=services)
 
 
 @app.route('/remhouses')
@@ -143,10 +144,10 @@ def rem_houses():
     return render_template('rem_houses.html')
 
 
-@app.route('/rem_list')
-def emp_list():
+@app.route('/rem_list/<int:id>')
+def emp_list(id):
     headings = ("First Name", "Last Name", "mobile", "email", " ")
-    emps = Employee.query.filter_by(service_id=4).all()
+    emps = Employee.query.filter_by(service_id=id).all()
     return render_template('removal_list.html', headings=headings, data=emps)
 
 

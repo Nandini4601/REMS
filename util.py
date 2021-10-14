@@ -1,4 +1,4 @@
-from rems.models import Apartment, House, Tenant, Types, Employee, Service,Transaction
+from rems.models import Apartment, House, Tenant, Types, Employee, Service, Transaction
 from rems import db
 
 ''' this is for populating houses'''
@@ -11,6 +11,9 @@ from rems import db
 #
 # print(h)
 
+'''To check services'''
+for s in Service.query:
+    print(s.id, s.service_type)
 
 '''To verify foreign key in tenants'''
 # t=Tenant.query
@@ -45,8 +48,8 @@ from rems import db
 
 
 '''To verify employees '''
-emp = Employee.query
-for e in emp:
-    print(e.id, e.fname, e.service_id)
-    k = Service.query.filter_by(id=e.service_id).first()
-    print(k.id, k.service_type)
+# emp = Employee.query
+# for e in emp:
+#     print(e.id, e.fname, e.service_id)
+#     k = Service.query.filter_by(id=e.service_id).first()
+#     print(k.id, k.service_type)

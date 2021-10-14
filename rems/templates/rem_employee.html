@@ -20,30 +20,11 @@
                         <div class="row">
                             <div class="col-12 ">
                                 <div class="d-grid gap-5 d-md-flex justify-content-md-end">
+                                    {% for service in services %}
                                     <button type="button" class="btnRegister"><a class="anchor"
-                                                                                 href="{{ url_for('emp_list') }}">Electrician</a>
+                                                                                 href="{{ url_for('emp_list',id=service.id) }}">{{ service.service_type }}</a>
                                     </button>
-                                    <button type="button" class="btnRegister"><a class="anchor"
-                                                                                 href="{{ url_for('emp_list') }}">Plumber</a>
-                                    </button>
-                                    <button type="button" class="btnRegister"><a class="anchor"
-                                                                                 href="{{ url_for('emp_list') }}">Carpenter</a>
-                                    </button>
-                                    <button type="button" class="btnRegister"><a class="anchor"
-                                                                                 href="{{ url_for('emp_list') }}">Painter</a>
-                                    </button>
-                                    <button type="button" class="btnRegister"><a class="anchor"
-                                                                                 href="{{ url_for('emp_list') }}">House
-                                        keeper</a></button>
-                                    <button type="button" class="btnRegister"><a class="anchor"
-                                                                                 href="{{ url_for('emp_list') }}">Manager</a>
-                                    </button>
-                                    <button type="button" class="btnRegister"><a class="anchor"
-                                                                                 href="{{ url_for('emp_list') }}">Marketing
-                                        Executive</a></button>
-                                    <button type="button" class="btnRegister"><a class="anchor"
-                                                                                 href="{{ url_for('emp_list') }}">Owner</a>
-                                    </button>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
