@@ -5,7 +5,7 @@ h1{
   padding-top: 90px;
 }
 .white-section{
-  padding-top: 80px;
+  padding-top: 100px;
   width: 700px;
   text-align: center;
   margin: auto;
@@ -15,7 +15,13 @@ h1{
   /* background: -webkit-linear-gradient(right, #7D1935, #90AACB); */
 
 }
-
+.fas{
+  color: #fff;
+  padding-right: 15px;
+}
+.fas:hover{
+  color: #C8C6C6;
+}
 .navbar{
   padding: 1%;
   background-color:#212121;
@@ -27,7 +33,7 @@ h1{
   font-weight: bold;
 }
 .navbar-brand:hover{
-color: #F6F6F6;
+color: #C8C6C6;
 text-decoration: none;
 }
 
