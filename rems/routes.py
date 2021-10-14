@@ -132,17 +132,26 @@ def tenant(id):
 def rem_tenant():
     return render_template('tenants_rm.html')
 
+
 @app.route('/rememployee')
 def rem_employee():
     return render_template('rem_employee.html')
+
 
 @app.route('/remhouses')
 def rem_houses():
     return render_template('rem_houses.html')
 
-@app.route('/list')
-def list():
-    return render_template('list.html')
+
+@app.route('/rem_list')
+def emp_list():
+    headings = ("First Name", "Last Name", "mobile", "email", " ")
+    data = list()
+    emps = Employee.query.filter_by(service_id=4).all()
+    for emp in emps:
+        data.append((emp.fname, emp.lname, emp.mobile, emp.email))
+    return render_template('removal_list.html', headings=headings, data=data)
+
 
 @app.route('/tenant_list')
 def tenant_list():

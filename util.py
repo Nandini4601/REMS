@@ -39,14 +39,14 @@ from rems import db
 #     print(t)
 
 '''Verifying Transactions'''
-trs=Transaction.query
-for t in trs:
-    print(t.desc,t.amt)
+# trs=Transaction.query
+# for t in trs:
+#     print(t.desc,t.amt)
 
 
 '''To verify employees '''
-# emp = Employee.query
-# for e in emp:
-#     print(e.id, e.fname, e.service_id)
-#     k = Service.query.filter_by(id=e.service_id).first()
-#     print(k.id, k.service_type)
+emp = Employee.query
+for e in emp:
+    print(e.id, e.fname, e.service_id)
+    k = Service.query.filter_by(id=e.service_id).first()
+    print(k.id, k.service_type)
