@@ -1,0 +1,50 @@
+h1{
+  font-family: "Montserrat";
+  text-align: center;
+  font-weight: bold;
+  padding-top: 90px;
+}
+.white-section{
+  padding-top: 80px;
+  width: 700px;
+  text-align: center;
+  margin: auto;
+}
+#title{
+  text-align: center;
+  /* background: -webkit-linear-gradient(right, #7D1935, #90AACB); */
+
+}
+
+.navbar{
+  padding: 1%;
+  background-color:#212121;
+}
+
+.navbar-brand{
+  font-family: "Ubuntu";
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+.navbar-brand:hover{
+color: #F6F6F6;
+text-decoration: none;
+}
+
+.nav-item{
+  padding: 0 18px;
+  font-family: "Ubuntu";
+}
+
+.nav-link{
+  font-size: 1.2rem;
+  font-family: "Ubuntu";
+}
+
+.anchor{
+  color: #fff;
+  text-decoration: none;
+}
+.anchor:hover{
+  color: #F6F6F6;
+}

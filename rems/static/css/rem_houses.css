@@ -1,0 +1,83 @@
+.register-heading{
+  padding-top: 50px;
+  text-align: left;
+}
+
+.btnRegister{
+    float: right;
+    margin-top: 10%;
+    border: none;
+    border-radius: 1.5rem;
+    
+    background: #CD113B;
+    color: #fff;
+    font-weight: 600;
+    width: 70%;
+    cursor: pointer;
+    text-align: center;
+    margin-right: 17%;
+}
+
+.btnRegister:hover{
+
+  background-color: #8C0000;
+}
+.register .nav-tabs{
+    margin-top: 3%;
+    border: none;
+    background: #CD113B;
+    border-radius: 1.5rem;
+    width: 28%;
+    float: right;
+}
+.register .nav-tabs .nav-link{
+    padding: 2%;
+    height: 34px;
+    font-weight: 600;
+    color: #fff;
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+}
+.register .nav-tabs .nav-link:hover{
+    border: none;
+}
+.register .nav-tabs .nav-link.active{
+    width: 100px;
+    color: #CD113B;
+    border: 2px solid #CD113B;
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+}
+
+.register-heading{
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    font-size: 2.5rem;
+    color: #495057;
+    font-family: "Montserrat";
+    font-weight: bold;
+}
+
+.register-heading2{
+    margin-left: 5%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    font-size: 1.5rem;
+    color: #495057;
+    font-family: "Montserrat";
+    font-weight: normal;
+}
+.box{
+text-align: center;
+}
+
+.form-group{
+  width: 40%;
+}
+.register-form{
+  margin-left: 500px;
+}
+/* .col-md-12{
+margin: auto;
+} */

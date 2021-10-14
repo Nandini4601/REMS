@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Tenants list</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/tenant_list.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;900&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <section id="title">
+      <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <a class="navbar-brand" href="{{ url_for('home2') }}">Employee Home Page</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('index') }}">Apartment page</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('logout') }}">Log out</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+    </section>
+<h1>List of all tenants in the House</h1>
+
+  <section class="white-section" id="">
+
+    <!-- <h2 class="section-heading"> List of all Tenants in the house</h2> -->
+
+    <table class="table table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Names</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Ashwin</td>
+          <td><button type="button" class="btn btn-danger  ms-2"><a class="anchor" href="">Remove</a></button></td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Shwetha</td>
+          <td><button type="button" class="btn btn-danger  ms-2"><a class="anchor" href="">Remove</a></button></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </section>
+  </body>
+</html>

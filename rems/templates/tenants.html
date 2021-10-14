@@ -115,19 +115,19 @@
 
                                 <p>
                                     {{ form.apt_num.label }}
-                                    {{ form.apt_num }}
+                                    {{ form.apt_num(class="form-control") }}
                                     {% for error in form.apt_num.errors %}
                                     <span style="color: red;">[{{ error }}]</span>
                                     {% endfor %}
                                     {{ form.house_num.label }}
-                                    {{ form.house_num }}
+                                    {{ form.house_num(class="form-control") }}
                                     {% for error in form.house_num.errors %}
                                     <span style="color: red;">[{{ error }}]</span>
                                     {% endfor %}
                                 </p>
 
 <!--                                <p>{{ form.submit(class="btnRegister") }}</p>-->
-                                <input type="submit">
+                                <input type="submit" class="btnRegister">
                                 <!--                            <div class="form-group">-->
                                 <!--                                <input type="text" class="form-control" placeholder="First Name *" value=""/>-->
                                 <!--                            </div>-->
