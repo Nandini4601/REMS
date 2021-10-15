@@ -54,8 +54,8 @@ class TenantAddForm(FlaskForm):
 
 
 class TenantRemoveForm(FlaskForm):
-    apt_num = apt_num = SelectField('Apartment', choices=['Theni', 'Madurai', 'Dindigul'])
-    house_num = SelectField('House')
+    apt_num = apt_num = SelectField('Apartment', choices=['Theni', 'Madurai', 'Dindigul'],render_kw={'class':'form-control'})
+    house_num = SelectField('House',render_kw={'class':'form-control'})
     submit = SubmitField('Find Tenants')
 
 
@@ -68,9 +68,9 @@ class TransactionAddForm(FlaskForm):
                                          Employee.service_id.in_((6, 7, 8))).all(),
                                      allow_blank=False,
                                      get_label='fname')
-    apt_num = SelectField('Apartment', choices=['Theni', 'Madurai', 'Dindigul'])
-    house_num = SelectField('House')
-    tenant_id = SelectField('Tenants')
+    apt_num = SelectField('Apartment', choices=['Theni', 'Madurai', 'Dindigul'],render_kw={'class':'form-control'})
+    house_num = SelectField('House',render_kw={'class':'form-control'})
+    tenant_id = SelectField('Tenants',render_kw={'class':'form-control'})
     amount = StringField('Amount', validators=[DataRequired()])
     description = StringField('Description', validators=[DataRequired()])
     submit = SubmitField('Add Transaction')

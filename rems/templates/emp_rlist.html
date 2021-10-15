@@ -22,7 +22,7 @@
                 <td> {{ emp.email }} </td>
                 <td>
                     <button type="button" class="btn btn-danger "><a
-                            href="{{ url_for('delete_emp',id=emp.id) }}">Remove</a></button>
+                            href="{{ url_for('delete_emp',id=emp.id) }}" class="anchor">Remove</a></button>
                 </td>
             </tr>
         {% endfor %}
