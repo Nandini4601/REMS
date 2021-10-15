@@ -148,7 +148,11 @@ def rem_houses():
 def emp_list(id):
     headings = ("First Name", "Last Name", "mobile", "email", " ")
     emps = Employee.query.filter_by(service_id=id).all()
-    return render_template('removal_list.html', headings=headings, data=emps)
+    return render_template('emp_rlist.html', headings=headings, data=emps)
+
+@app.route('/tenant_list')
+def tenant_list():
+    return render_template('tenant_list.html')
 
 
 @app.route('/delete_emp/<int:id>')
@@ -175,9 +179,6 @@ def delete_house(id):
     return render_template("ack2.html")
 
 
-@app.route('/tenant_list')
-def tenant_list():
-    return render_template('tenant_list.html')
 
 
 @app.route('/addhouse', methods=['GET', 'POST'])
