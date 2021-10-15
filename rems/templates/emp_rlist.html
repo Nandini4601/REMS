@@ -1,6 +1,10 @@
 {% extends 'removal_list.html' %}
 {% block heading %}
 {% endblock %}
+
+{% block nav %}
+    <a href="{{ url_for('rem_employee') }}"><i class="fas fa-arrow-left fa-2x"></i></a>
+{% endblock %}
 {% block content %}
     <table class="table table-hover">
         <thead class="table-dark">

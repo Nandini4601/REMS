@@ -20,7 +20,8 @@
 <section id="title">
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-            <a href="{{ url_for('rem_employee') }}"><i class="fas fa-arrow-left fa-2x"></i></a>
+            {% block nav %}
+            {% endblock %}
             <a class="navbar-brand " href="{{ url_for('home2') }}">Employee Home Page</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -33,9 +34,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('index') }}">Apartment page</a>
                     </li>
-                    <!-- <li class="nav-item">
-                      <a class="nav-link" href="{{ url_for('rem_employee') }}">Menu</a>
-                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('logout') }}">Log out</a>
                     </li>
