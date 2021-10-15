@@ -2,77 +2,83 @@
 <html>
 <!-- lang="en" dir="ltr" -->
 <head>
-  <meta charset="utf-8">
-  <title></title>
+    <meta charset="utf-8">
+    <title></title>
 
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/tenants_rm.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/tenants_rm.css') }}">
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-  <script>
-    var subjectObject = {
-      Theni: ['G1','G2','F1'],
-      Madurai: ['G1','G2','F1','F2','S1'],
-      Dindigul: ['G1','G2','F1','F2','F3','S1']
-    }
-    function changecat(value) {
-           if (value.length == 0) document.getElementById("housenum").innerHTML = "<option></option>";
-           else {
-               var catOptions = "";
-               for (categoryId in subjectObject[value]) {
-                   catOptions += "<option>" + subjectObject[value][categoryId] + "</option>";
-               }
-               document.getElementById("housenum").innerHTML = catOptions;
-           }
-       }
-    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
 
 </head>
 
 <body>
-  <section class="h-100 bg-danger">
+<section class="h-100 bg-danger">
     <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col">
-          <div class="card card-registration my-4">
-            <div class="row g-0">
-              <div class="col-md-6 col-12">
-                <img src="https://www.losangelespropertymanagementgroup.com/wp-content/uploads/2018/04/scot-6.png" alt="Sample photo" class="img-fluid" style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
-              </div>
-              <div class="col-md-6 col-12">
-                <div class="card-body p-md-5 text-black">
-                  <h3 class="mb-5 text-uppercase">Tenant Removal page</h3>
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
+                <div class="card card-registration my-4">
+                    <div class="row g-0">
+                        <div class="col-md-6 col-12">
+                            <img src="https://www.losangelespropertymanagementgroup.com/wp-content/uploads/2018/04/scot-6.png"
+                                 alt="Sample photo" class="img-fluid"
+                                 style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;"/>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="card-body p-md-5 text-black">
+                                <h3 class="mb-5 text-uppercase">Tenant Removal page</h3>
 
-                  <div class="form-outline mb-4">
-                    <!-- <input type="text" id="form3Example8" class="form-control form-control-lg" /> -->
-                    <select id="location" class="form-control form-control-lg" name="location" onchange="changecat(this.value);">
-                      <option value=""  disabled selected hidden>Choose location</option>
-                      <option value="Theni" >Theni</option>
-                      <option value="Madurai" >Madurai</option>
-                      <option value="Dindigul" >Dindigul</option>
-                    </select>
+                                <div class="form-outline mb-4">
+                                    <form action="{{ url_for('rem_tenant') }}" method="POST">
+                                        {{ form.hidden_tag() }}
 
-                  </div>
+                                        <p>
+                                            {{ form.apt_num.label }}
+                                            {{ form.apt_num }}
+                                            {% for error in form.apt_num.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}
+                                            {{ form.house_num.label }}
+                                            {{ form.house_num }}
+                                            {% for error in form.house_num.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}
+                                        </p>
+                                        <input type="submit" class="btnRegister">
+                                    </form>
+                                    <script>
+                                        let apt_select = document.getElementById('apt_num');
+                                        let house_select = document.getElementById('house_num');
 
-                  <div class="form-outline mb-4">
-                    <select id="housenum" name="housenum" class="form-control form-control-lg">
-                      <option value=""  disabled selected hidden>House number</option>
-                    </select>
-                  </div>
+                                        apt_select.onchange = function () {
+                                            apt = apt_select.value;
 
 
-                  <div class="d-flex justify-content-end pt-3">
-                    <button type="button" class="btn btn-dark btn-lg ms-2"><a class="anchor" href="{{ url_for('tenant_list') }}">Submit</a></button>
-                  </div>
+                                            fetch('/addtenant/' + apt).then(function (response) {
+                                                response.json().then(function (data) {
+                                                    let optionHTML = '';
 
+                                                    for (let house of data.houses) {
+                                                        optionHTML += '<option value=' + house.id + '>' + house.house_num + '</option>';
+                                                    }
+
+                                                    house_select.innerHTML = optionHTML;
+                                                });
+                                            });
+                                        }
+                                    </script>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </section>
+</section>
 
 </body>
 

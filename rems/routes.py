@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, url_for, request, jsonify
 from rems import app, db
-from rems.forms import LoginForm, EmployeeAddForm, HouseAddForm, TenantAddForm, TransactionAddForm
+from rems.forms import LoginForm, EmployeeAddForm, HouseAddForm, TenantAddForm, TransactionAddForm, TenantRemoveForm
 from flask_login import current_user, login_user, logout_user, login_required
 from rems.models import User, Employee, House, Apartment, Tenant, Transaction, Service
 from werkzeug.urls import url_parse
@@ -60,6 +60,18 @@ def add_tenant():
         db.session.commit()
         return redirect(url_for('home2'))
     return render_template('tenants.html', form=form)
+
+
+@app.route('/remtenant', methods=['GET', 'POST'])
+def rem_tenant():
+    form = TenantRemoveForm()
+    form.house_num.choices = [(house.id, house.house_num) for house in House.query.filter_by(apt_id=1).all()]
+    if form.validate_on_submit():
+        id=form.house_num.data
+        headings = ("First Name", "Last Name", "mobile", "email","DoB", "Spouse number "," ")
+        tens = Tenant.query.filter_by(house_id=id).all()
+        return render_template('ten_rlist.html', headings=headings, data=tens)
+    return render_template('tenants_rm.html', form=form)
 
 
 @app.route('/addtenant/<area>')
@@ -128,15 +140,10 @@ def tenant(id):
     return jsonify({'tenants': tenantArray})
 
 
-@app.route('/remtenant')
-def rem_tenant():
-    return render_template('tenants_rm.html')
-
-
 @app.route('/rememployee')
 def rem_employee():
-    services=Service.query
-    return render_template('rem_employee.html',services=services)
+    services = Service.query
+    return render_template('rem_employee.html', services=services)
 
 
 @app.route('/remhouses')
@@ -149,6 +156,7 @@ def emp_list(id):
     headings = ("First Name", "Last Name", "mobile", "email", " ")
     emps = Employee.query.filter_by(service_id=id).all()
     return render_template('emp_rlist.html', headings=headings, data=emps)
+
 
 @app.route('/tenant_list')
 def tenant_list():
@@ -177,8 +185,6 @@ def delete_house(id):
     db.session.delete(house_todel)
     db.session.commit()
     return render_template("ack2.html")
-
-
 
 
 @app.route('/addhouse', methods=['GET', 'POST'])

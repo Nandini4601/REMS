@@ -1,225 +1,205 @@
 {% extends 'base.html' %}
 {% block heading %}
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/tenants.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/tenants.css') }}">
 
-<!-- Bootstrap DatePicker -->
-<script type="text/javascript">
-  $(function() {
-    $('#txtDate').datepicker({
-      format: "dd/mm/yyyy"
-    });
-  });
-
-
+    <!-- Bootstrap DatePicker -->
+    <script type="text/javascript">
+        $(function () {
+            $('#txtDate').datepicker({
+                format: "dd/mm/yyyy"
+            });
+        });
 
 
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#txtDate2').datepicker({
+                format: "dd/mm/yyyy"
+            });
+        });
 
 
-
-
-
-</script>
-
-<script type="text/javascript">
-  $(function() {
-    $('#txtDate2').datepicker({
-      format: "dd/mm/yyyy"
-    });
-  });
-
-
-
-
-
-
-
-
-
-</script>
+    </script>
 
 
 {% endblock %}
 
 {% block content %}
 
-<div class="container register">
-    <div class="row">
-        <div class="col-md-3 register-left">
-            <h3 class="register-heading" style="color:#fff ">Tenants data entry page</h3>
-        </div>
-        <div class="col-md-9 register-right">
+    <div class="container register">
+        <div class="row">
+            <div class="col-md-3 register-left">
+                <h3 class="register-heading" style="color:#fff ">Tenants data entry page</h3>
+            </div>
+            <div class="col-md-9 register-right">
 
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <h3 class="register-heading2">Enter the data here</h3>
-                    <div class="row register-form">
-                        <div class="col-md-6">
-                            <form action="{{ url_for('add_tenant') }}" method="POST">
-                                {{ form.hidden_tag() }}
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h3 class="register-heading2">Enter the data here</h3>
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <form action="{{ url_for('add_tenant') }}" method="POST">
+                                    {{ form.hidden_tag() }}
 
-                                <p>
-                                    {{ form.firstname.label }}
-                                    {{ form.firstname(class="form-control")}}
-                                    {% for error in form.firstname.errors %}
-                                    <span style="color: red;">[{{ error }}]</span>
-                                    {% endfor %}
-                                </p>
+                                    <p>
+                                        {{ form.firstname.label }}
+                                        {{ form.firstname(class="form-control") }}
+                                        {% for error in form.firstname.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                        {% endfor %}
+                                    </p>
 
-                                <p>
-                                    {{ form.lastname.label }}
-                                    {{ form.lastname(class="form-control")}}
-                                    {% for error in form.lastname.errors %}
-                                    <span style="color: red;">[{{ error }}]</span>
-                                    {% endfor %}
-                                </p>
+                                    <p>
+                                        {{ form.lastname.label }}
+                                        {{ form.lastname(class="form-control") }}
+                                        {% for error in form.lastname.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                        {% endfor %}
+                                    </p>
 
-                                <p>
-                                    {{ form.DoB.label }}
-                                    {{ form.DoB(class="form-control") }}
-                                    {% for error in form.DoB.errors %}
-                                    <span style="color: red;">[{{ error }}]</span>
-                                    {% endfor %}
-                                </p>
+                                    <p>
+                                        {{ form.DoB.label }}
+                                        {{ form.DoB(class="form-control") }}
+                                        {% for error in form.DoB.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                        {% endfor %}
+                                    </p>
 
-                                <p>
-                                    {{ form.mobile.label }}
-                                    {{ form.mobile(class="form-control") }}
-                                    {% for error in form.mobile.errors %}
-                                    <span style="color: red;">[{{ error }}]</span>
-                                    {% endfor %}
-                                </p>
+                                    <p>
+                                        {{ form.mobile.label }}
+                                        {{ form.mobile(class="form-control") }}
+                                        {% for error in form.mobile.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                        {% endfor %}
+                                    </p>
 
-                                <p>
-                                    {{ form.emer_mobile.label }}
-                                    {{ form.emer_mobile(class="form-control") }}
-                                    {% for error in form.emer_mobile.errors %}
-                                    <span style="color: red;">[{{ error }}]</span>
-                                    {% endfor %}
-                                </p>
+                                    <p>
+                                        {{ form.emer_mobile.label }}
+                                        {{ form.emer_mobile(class="form-control") }}
+                                        {% for error in form.emer_mobile.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                        {% endfor %}
+                                    </p>
 
-                                <p>
-                                    {{ form.email.label }}
-                                    {{ form.email(class="form-control") }}
-                                    {% for error in form.email.errors %}
-                                    <span style="color: red;">[{{ error }}]</span>
-                                    {% endfor %}
-                                </p>
+                                    <p>
+                                        {{ form.email.label }}
+                                        {{ form.email(class="form-control") }}
+                                        {% for error in form.email.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                        {% endfor %}
+                                    </p>
 
-                                <p>
-                                    {{ form.spouse_mob.label }}
-                                    {{ form.spouse_mob(class="form-control") }}
-                                    {% for error in form.spouse_mob.errors %}
-                                    <span style="color: red;">[{{ error }}]</span>
-                                    {% endfor %}
-                                </p>
+                                    <p>
+                                        {{ form.spouse_mob.label }}
+                                        {{ form.spouse_mob(class="form-control") }}
+                                        {% for error in form.spouse_mob.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                        {% endfor %}
+                                    </p>
 
-                                <p>
-                                    {{ form.apt_num.label }}
-                                    {{ form.apt_num(class="form-control") }}
-                                    {% for error in form.apt_num.errors %}
-                                    <span style="color: red;">[{{ error }}]</span>
-                                    {% endfor %}
-                                    {{ form.house_num.label }}
-                                    {{ form.house_num(class="form-control") }}
-                                    {% for error in form.house_num.errors %}
-                                    <span style="color: red;">[{{ error }}]</span>
-                                    {% endfor %}
-                                </p>
+                                    <p>
+                                        {{ form.apt_num.label }}
+                                        {{ form.apt_num(class="form-control") }}
+                                        {% for error in form.apt_num.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                        {% endfor %}
+                                        {{ form.house_num.label }}
+                                        {{ form.house_num(class="form-control") }}
+                                        {% for error in form.house_num.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                        {% endfor %}
+                                    </p>
 
-<!--                                <p>{{ form.submit(class="btnRegister") }}</p>-->
-                                <input type="submit" class="btnRegister">
-                                <!--                            <div class="form-group">-->
-                                <!--                                <input type="text" class="form-control" placeholder="First Name *" value=""/>-->
-                                <!--                            </div>-->
+                                    <!--                                <p>{{ form.submit(class="btnRegister") }}</p>-->
+                                    <input type="submit" class="btnRegister">
+                                    <!--                            <div class="form-group">-->
+                                    <!--                                <input type="text" class="form-control" placeholder="First Name *" value=""/>-->
+                                    <!--                            </div>-->
 
-                                <!--                            <div class="form-group">-->
-                                <!--                                <input type="text" class="form-control" placeholder="Last Name *" value=""/>-->
-                                <!--                            </div>-->
-
-
-                                <!--                            <div class="form-group">-->
-                                <!--                                <input id="txtDate" type="text" class="form-control date-input"-->
-                                <!--                                       placeholder="Date of birth" readonly="readonly"/>-->
-
-                                <!--                            </div>-->
+                                    <!--                            <div class="form-group">-->
+                                    <!--                                <input type="text" class="form-control" placeholder="Last Name *" value=""/>-->
+                                    <!--                            </div>-->
 
 
-                                <!--                            <div class="form-group">-->
-                                <!--                                <input type="text" name="country_code" class="form-control" title="Error Message"-->
-                                <!--                                       placeholder="Phone number" pattern="[1-9]{1}[0-9]{9}">-->
-                                <!--                            </div>-->
+                                    <!--                            <div class="form-group">-->
+                                    <!--                                <input id="txtDate" type="text" class="form-control date-input"-->
+                                    <!--                                       placeholder="Date of birth" readonly="readonly"/>-->
 
-                                <!--                            <div class="form-group">-->
-                                <!--                                <input type="text" name="country_code" class="form-control" title="Error Message"-->
-                                <!--                                       placeholder="Emergency Phone number" pattern="[1-9]{1}[0-9]{9}">-->
-                                <!--                            </div>-->
-                                <!--                            <div class="form-group">-->
-
-                                <!--                                <h5 style="color:#6D8299;">If Married Enter spouse's phone number</h5>-->
-                                <!--                            </div>-->
-
-                                <!--                            <div class="form-group">-->
-                                <!--                                <input type="text" name="country_code" class="form-control" title="Error Message"-->
-                                <!--                                       placeholder="Phone number" pattern="[1-9]{1}[0-9]{9}">-->
-                                <!--                            </div>-->
+                                    <!--                            </div>-->
 
 
-                                <!--                            <legend>House Details</legend>-->
+                                    <!--                            <div class="form-group">-->
+                                    <!--                                <input type="text" name="country_code" class="form-control" title="Error Message"-->
+                                    <!--                                       placeholder="Phone number" pattern="[1-9]{1}[0-9]{9}">-->
+                                    <!--                            </div>-->
 
-                                <!--                            &lt;!&ndash; Text input&ndash;&gt;-->
-                                <!--                            <div class="form-group">-->
-                                <!--                                &lt;!&ndash; <label class="col-sm-2 control-label" for="textinput">Line 1</label> &ndash;&gt;-->
+                                    <!--                            <div class="form-group">-->
+                                    <!--                                <input type="text" name="country_code" class="form-control" title="Error Message"-->
+                                    <!--                                       placeholder="Emergency Phone number" pattern="[1-9]{1}[0-9]{9}">-->
+                                    <!--                            </div>-->
+                                    <!--                            <div class="form-group">-->
 
-                                <!--                                <select name="apt" id="apt" class="form-control" onchange="changecat(this.value);">-->
-                                <!--                                    <option value="" disabled selected hidden>Apartment number</option>-->
-                                <!--                                    <option value="1">1</option>-->
-                                <!--                                    <option value="2">2</option>-->
-                                <!--                                    <option value="3">3</option>-->
-                                <!--                                </select>-->
+                                    <!--                                <h5 style="color:#6D8299;">If Married Enter spouse's phone number</h5>-->
+                                    <!--                            </div>-->
 
-                                <!--                            </div>-->
-
-                                <!--                            <div class="form-group">-->
-
-                                <!--                                <select name="houses" id="houses" class="form-control">-->
-                                <!--                                    <option value=""disabled selected hidden>House Number</option>-->
-                                <!--                                </select>-->
-
-                                <!--                            </div>-->
-
-                            </form>
-                            <script>
-                                let apt_select=document.getElementById('apt_num');
-                                let house_select= document.getElementById('house_num');
-
-                                apt_select.onchange = function() {
-                                    apt = apt_select.value;
+                                    <!--                            <div class="form-group">-->
+                                    <!--                                <input type="text" name="country_code" class="form-control" title="Error Message"-->
+                                    <!--                                       placeholder="Phone number" pattern="[1-9]{1}[0-9]{9}">-->
+                                    <!--                            </div>-->
 
 
-                                    fetch('/addtenant/' + apt).then(function(response) {
-                                        response.json().then(function(data){
-                                            let optionHTML = '';
+                                    <!--                            <legend>House Details</legend>-->
 
-                                           for (let house of data.houses){
-                                                optionHTML += '<option value=' + house.id + '>' + house.house_num + '</option>';
-                                           }
+                                    <!--                            &lt;!&ndash; Text input&ndash;&gt;-->
+                                    <!--                            <div class="form-group">-->
+                                    <!--                                &lt;!&ndash; <label class="col-sm-2 control-label" for="textinput">Line 1</label> &ndash;&gt;-->
 
-                                           house_select.innerHTML= optionHTML;
+                                    <!--                                <select name="apt" id="apt" class="form-control" onchange="changecat(this.value);">-->
+                                    <!--                                    <option value="" disabled selected hidden>Apartment number</option>-->
+                                    <!--                                    <option value="1">1</option>-->
+                                    <!--                                    <option value="2">2</option>-->
+                                    <!--                                    <option value="3">3</option>-->
+                                    <!--                                </select>-->
+
+                                    <!--                            </div>-->
+
+                                    <!--                            <div class="form-group">-->
+
+                                    <!--                                <select name="houses" id="houses" class="form-control">-->
+                                    <!--                                    <option value=""disabled selected hidden>House Number</option>-->
+                                    <!--                                </select>-->
+
+                                    <!--                            </div>-->
+
+                                </form>
+                                <script>
+                                    let apt_select = document.getElementById('apt_num');
+                                    let house_select = document.getElementById('house_num');
+
+                                    apt_select.onchange = function () {
+                                        apt = apt_select.value;
+
+
+                                        fetch('/addtenant/' + apt).then(function (response) {
+                                            response.json().then(function (data) {
+                                                let optionHTML = '';
+
+                                                for (let house of data.houses) {
+                                                    optionHTML += '<option value=' + house.id + '>' + house.house_num + '</option>';
+                                                }
+
+                                                house_select.innerHTML = optionHTML;
+                                            });
                                         });
-                                    });
                                     }
-
-
-
-
-
-
-                            </script>
+                                </script>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 {% endblock %}

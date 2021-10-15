@@ -1,10 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'removal_list.html' %}
+{% block heading %}
+{% endblock %}
+
+{% block nav %}
+    <a href="{{ url_for('rem_tenant') }}"><i class="fas fa-arrow-left fa-2x"></i></a>
+{% endblock %}
+{% block content %}
+    <table class="table table-hover">
+        <thead class="table-dark">
+        <tr>
+            {% for header in headings %}
+                <th>{{ header }}</th>
+            {% endfor %}
+        </tr>
+        </thead>
+        {% for ten in data %}
+            <tr>
+                <td> {{ ten.fname }}</td>
+                <td> {{ ten.lname }} </td>
+                <td> {{ ten.mob_num }} </td>
+                <td> {{ ten.email }} </td>
+                <td> {{ ten.dob.strftime("%x") }} </td>
+                <td> {{ ten.Spouse_num }} </td>
+                <td>
+                    <button type="button" class="btn btn-danger "><a
+                            href="{{ url_for('delete_ten',id=ten.id) }}">Remove</a></button>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
