@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block heading %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/rem_houses.css') }}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="container register">
+        <h3 class="register-heading" style="color:#CD113B ">Houses Data Remove page</h3>
+    </div>
+
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+            <section class="box">
+
+                <h3 class="register-heading2">Enter the House Details here</h3>
+                <div class="register-form">
+                    <form action="{{ url_for('rem_house') }}" method="POST">
+                        {{ form.hidden_tag() }}
+                        <p>
+                            {{ form.apt_num.label }}
+                            {{ form.apt_num }}
+                            {% for error in form.apt_num.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                            {{ form.house_num.label }}
+                            {{ form.house_num }}
+                            {% for error in form.house_num.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+                        <div class="form-group">
+                            <input type="submit" class="btnRegister btn-lg" value="Remove"/>
+                        </div>
+
+                    </form>
+                    <script>
+                        let apt_select = document.getElementById('apt_num');
+                        let house_select = document.getElementById('house_num');
+
+                        apt_select.onchange = function () {
+                            apt = apt_select.value;
+
+
+                            fetch('/addtenant/' + apt).then(function (response) {
+                                response.json().then(function (data) {
+                                    let optionHTML = '';
+
+                                    for (let house of data.houses) {
+                                        optionHTML += '<option value=' + house.id + '>' + house.house_num + '</option>';
+                                    }
+
+                                    house_select.innerHTML = optionHTML;
+                                });
+                            });
+                        }
+                    </script>
+                </div>
+            </section>
+        </div>
+
+    </div>
+{% endblock %}

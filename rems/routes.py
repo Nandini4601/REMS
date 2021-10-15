@@ -67,11 +67,21 @@ def rem_tenant():
     form = TenantRemoveForm()
     form.house_num.choices = [(house.id, house.house_num) for house in House.query.filter_by(apt_id=1).all()]
     if form.validate_on_submit():
-        id=form.house_num.data
-        headings = ("First Name", "Last Name", "mobile", "email","DoB", "Spouse number "," ")
+        id = form.house_num.data
+        headings = ("First Name", "Last Name", "mobile", "email", "DoB", "Spouse number ", " ")
         tens = Tenant.query.filter_by(house_id=id).all()
         return render_template('ten_rlist.html', headings=headings, data=tens)
     return render_template('tenants_rm.html', form=form)
+
+
+@app.route('/remhouses',methods=['GET', 'POST'])
+def rem_house():
+    form = TenantRemoveForm()
+    form.house_num.choices = [(house.id, house.house_num) for house in House.query.filter_by(apt_id=1).all()]
+    if form.validate_on_submit():
+        id = form.house_num.data
+        url_for('delete_house', id=id)
+    return render_template('rem_house.html', form=form)
 
 
 @app.route('/addtenant/<area>')
@@ -146,21 +156,12 @@ def rem_employee():
     return render_template('rem_employee.html', services=services)
 
 
-@app.route('/remhouses')
-def rem_houses():
-    return render_template('rem_houses.html')
-
-
 @app.route('/rem_list/<int:id>')
 def emp_list(id):
     headings = ("First Name", "Last Name", "mobile", "email", " ")
     emps = Employee.query.filter_by(service_id=id).all()
     return render_template('emp_rlist.html', headings=headings, data=emps)
 
-
-@app.route('/tenant_list')
-def tenant_list():
-    return render_template('tenant_list.html')
 
 
 @app.route('/delete_emp/<int:id>')
