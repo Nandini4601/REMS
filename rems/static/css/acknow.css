@@ -13,5 +13,13 @@
 }
 .btn{
   float: right;
-  margin: 5% 3% 5% 0;
+  margin: 3% 10% 5% 0;
+}
+
+.anchor{
+  color: #fff;
+  text-decoration: none;
+}
+.anchor:hover{
+  color: #F6F6F6;
 }

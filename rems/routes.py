@@ -66,7 +66,7 @@ def add_tenant():
                         )
         db.session.add(tenant)
         db.session.commit()
-        return redirect(url_for('home2'))
+        return render_template('ack1.html')
     return render_template('tenants.html', form=form)
 
 
@@ -125,7 +125,7 @@ def add_trans():
                                   )
         db.session.add(transaction)
         db.session.commit()
-        return redirect(url_for('home2'))
+        return render_template("ack2.html")
     return render_template('transactions.html', form=form)
 
 
@@ -210,7 +210,7 @@ def add_house():
                       )
         db.session.add(house)
         db.session.commit()
-        return redirect(url_for('home2'))
+        return render_template("ack2.html")
     return render_template('houses.html', form=form)
 
 
@@ -228,5 +228,5 @@ def add_employee():
                        service_id=form.service_list.data.id)
         db.session.add(emp)
         db.session.commit()
-        return redirect(url_for('home2'))
+        return render_template("ack2.html")
     return render_template('employee.html', form=form)

@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="css/acknow.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/acknow.css') }}">
     <script src="https://kit.fontawesome.com/a19c43a5a2.js" crossorigin="anonymous"></script>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;900&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
   </head>
   <body>
   {% block content %}
-{#    <h1 class="heading"><i class="fas fa-check-circle icfa"></i>Your data has been successfully entered</h1>#}
+<!-- {#    <h1 class="heading"><i class="fas fa-check-circle icfa"></i>Your data has been successfully entered</h1>#}
 {#    <button type="button" class="btn btn-dark btn-lg">Add page</button>#}
-{#    <button type="button" class="btn btn-dark btn-lg">Employee page</button>#}
+{#    <button type="button" class="btn btn-dark btn-lg">Employee page</button>#} -->
   {% endblock %}
   </body>
 </html>
