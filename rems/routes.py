@@ -73,7 +73,6 @@ def add_tenant():
 @app.route('/remtenant', methods=['GET', 'POST'])
 def rem_tenant():
     form = TenantRemoveForm()
-    form.house_num.choices = [(house.id, house.house_num) for house in House.query.filter_by(apt_id=1).all()]
     if form.validate_on_submit():
         id = form.house_num.data
         headings = ("First Name", "Last Name", "mobile", "email", "DoB", "Spouse number ", " ")
@@ -88,7 +87,10 @@ def rem_house():
     form.house_num.choices = [(house.id, house.house_num) for house in House.query.filter_by(apt_id=1).all()]
     if form.validate_on_submit():
         id = form.house_num.data
-        return url_for('delete_house', id=id)
+        house_todel = House.query.filter_by(id=id).first()
+        db.session.delete(house_todel)
+        db.session.commit()
+        return render_template("ack2.html")
     return render_template('rem_house.html', form=form)
 
 

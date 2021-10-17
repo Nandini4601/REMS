@@ -48,14 +48,15 @@ class TenantAddForm(FlaskForm):
     emer_mobile = StringField('Emergency mobile Number', validators=[DataRequired()])
     email = StringField('Email Address', validators=[DataRequired()])
     spouse_mob = StringField('Spouse Mobile Number')
-    apt_num = SelectField('Apartment', choices=['Theni', 'Madurai', 'Dindigul'])
-    house_num = SelectField('House')
+    apt_num = SelectField('Apartment', choices=['Theni', 'Madurai', 'Dindigul'], validate_choice=False)
+    house_num = SelectField('House', validate_choice=False)
     submit = SubmitField('Add Tenant')
 
 
 class TenantRemoveForm(FlaskForm):
-    apt_num = SelectField('Apartment', choices=['Theni', 'Madurai', 'Dindigul'],render_kw={'class':'form-control'})
-    house_num = SelectField('House',render_kw={'class':'form-control'})
+    apt_num = SelectField('Apartment', choices=['Theni', 'Madurai', 'Dindigul'], render_kw={'class': 'form-control'},
+                          validate_choice=False)
+    house_num = SelectField('House', render_kw={'class': 'form-control'}, validate_choice=False)
     submit = SubmitField('Find Tenants')
 
 
@@ -68,9 +69,10 @@ class TransactionAddForm(FlaskForm):
                                          Employee.service_id.in_((6, 7, 8))).all(),
                                      allow_blank=False,
                                      get_label='fname')
-    apt_num = SelectField('Apartment', choices=['Theni', 'Madurai', 'Dindigul'],render_kw={'class':'form-control'})
-    house_num = SelectField('House',render_kw={'class':'form-control'})
-    tenant_id = SelectField('Tenants',render_kw={'class':'form-control'})
+    apt_num = SelectField('Apartment', choices=['Theni', 'Madurai', 'Dindigul'], render_kw={'class': 'form-control'},
+                          validate_choice=False)
+    house_num = SelectField('House', render_kw={'class': 'form-control'}, validate_choice=False)
+    tenant_id = SelectField('Tenants', render_kw={'class': 'form-control'}, validate_choice=False)
     amount = StringField('Amount', validators=[DataRequired()])
     description = StringField('Description', validators=[DataRequired()])
     submit = SubmitField('Add Transaction')

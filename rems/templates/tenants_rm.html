@@ -9,37 +9,37 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;900&family=Ubuntu:wght@300&display=swap"
-                rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;900&family=Ubuntu:wght@300&display=swap"
+          rel="stylesheet">
 
 </head>
 
 <body>
-  <section id="title">
-      <div class="container-fluid">
-          <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+<section id="title">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
 
-              <a class="navbar-brand " href="{{ url_for('home2') }}">Employee Home Page</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                      aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
+            <a class="navbar-brand " href="{{ url_for('home2') }}">Employee Home Page</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav ms-auto">
-                      <li class="nav-item">
-                          <a class="nav-link" href="{{ url_for('index') }}">Apartment page</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="{{ url_for('logout') }}">Log out</a>
-                      </li>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('index') }}">Apartment page</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('logout') }}">Log out</a>
+                    </li>
 
-                  </ul>
-              </div>
-          </nav>
-      </div>
-  </section>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</section>
 <section class="h-100 bg-danger">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -60,7 +60,7 @@
                                         {{ form.hidden_tag() }}
 
                                         <p>
-                                            {{ form.apt_num.label}}
+                                            {{ form.apt_num.label }}
                                             {{ form.apt_num }}
                                             {% for error in form.apt_num.errors %}
                                                 <span style="color: red;">[{{ error }}]</span>
