@@ -9,7 +9,7 @@ from werkzeug.urls import url_parse
 @app.route('/')
 @app.route('/home')
 def index():
-    headings = ("BHK", "Locality", "Rent", "Advance", " ")
+    headings = ("BHK", "Locality", "Rent(in Thousands)", "Advance(in Thousands)", " ")
     ap = Apartment.query
     ids = map(lambda x: x.id, ap)
     places = map(lambda x: x.locality, ap)
