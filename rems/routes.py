@@ -9,7 +9,15 @@ from werkzeug.urls import url_parse
 @app.route('/')
 @app.route('/home')
 def index():
-    return render_template('homepage.html')
+    headings = ("BHK", "Locality", "Rent", "Advance", " ")
+    ap = Apartment.query
+    ids = map(lambda x: x.id, ap)
+    places = map(lambda x: x.locality, ap)
+    locs=dict(zip(ids,places))
+    houses = House.query.filter(
+        House.id.not_in(map(lambda x: x[0], Tenant.query.with_entities(Tenant.house_id).all()))).all()
+
+    return render_template('homepage.html',headings=headings,houses=houses,apts=locs)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -74,13 +82,13 @@ def rem_tenant():
     return render_template('tenants_rm.html', form=form)
 
 
-@app.route('/remhouses',methods=['GET', 'POST'])
+@app.route('/remhouses', methods=['GET', 'POST'])
 def rem_house():
     form = TenantRemoveForm()
     form.house_num.choices = [(house.id, house.house_num) for house in House.query.filter_by(apt_id=1).all()]
     if form.validate_on_submit():
         id = form.house_num.data
-        url_for('delete_house', id=id)
+        return url_for('delete_house', id=id)
     return render_template('rem_house.html', form=form)
 
 
@@ -161,7 +169,6 @@ def emp_list(id):
     headings = ("First Name", "Last Name", "mobile", "email", " ")
     emps = Employee.query.filter_by(service_id=id).all()
     return render_template('emp_rlist.html', headings=headings, data=emps)
-
 
 
 @app.route('/delete_emp/<int:id>')

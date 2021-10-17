@@ -54,7 +54,7 @@ class TenantAddForm(FlaskForm):
 
 
 class TenantRemoveForm(FlaskForm):
-    apt_num = apt_num = SelectField('Apartment', choices=['Theni', 'Madurai', 'Dindigul'],render_kw={'class':'form-control'})
+    apt_num = SelectField('Apartment', choices=['Theni', 'Madurai', 'Dindigul'],render_kw={'class':'form-control'})
     house_num = SelectField('House',render_kw={'class':'form-control'})
     submit = SubmitField('Find Tenants')
 

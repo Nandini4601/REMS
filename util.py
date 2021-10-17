@@ -19,13 +19,29 @@ import datetime
 '''To verify foreign key in tenants'''
 # t=Tenant.query
 # print(t1.fname,t1.house_id)
+# houses=set()
+# for t in Tenant.query:
+#      # db.session.delete(t)
+#      # db.session.commit()
+#      houses.add(t.house_id)
+#      # h=House.query.filter_by(id=t.house_id).first()
+#      # print(h.id,h.house_num,h.apt_id)
+# houses=tuple(houses)
 
-for t in Tenant.query:
-     # db.session.delete(t)
-     # db.session.commit()
-     print(t.fname,t.dob.strftime("%x"))
-     # h=House.query.filter_by(id=t.house_id).first()
-     # print(h.id,h.house_num,h.apt_id)
+'''Obtaining vacant houses'''
+# houses = House.query.filter(
+#     House.id.not_in(map(lambda x: x[0], Tenant.query.with_entities(Tenant.house_id).all()))).all()
+# list(map(lambda x: print(x.house_num, x.id), houses))
+
+'''To obtain apartment localities as dictionaries'''
+# ap = Apartment.query
+# ids = map(lambda x: x.id, ap)
+# locs = map(lambda x: x.locality, ap)
+# loc = dict(zip(ids, locs))
+# print(loc)
+
+for house in House.query.filter_by(apt_id=2):
+    print(house.id,house.house_num,house.rent,house.advance)
 
 '''To populate the types db'''
 # types = []

@@ -176,29 +176,23 @@
     <table class="table table-hover">
       <thead class="table-dark">
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">BHK</th>
-          <th scope="col">Location</th>
-          <th scope="col">Rent</th>
-          <th scope="col"></th>
+            {% for header in headings %}
+                <th>{{ header }}</th>
+            {% endfor %}
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>3 BHK</td>
-          <td>Theni</td>
-          <td>@tbd</td>
-          <td><a href="#">more info</a></td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>2 BHK</td>
-          <td>Madurai</td>
-          <td>@tbd</td>
-          <td><a href="#">more info</a></td>
-        </tr>
-
+        {% for house in houses %}
+            <tr>
+                <td> {{ house.bhk }}</td>
+                <td> {{ apts[house.apt_id] }} </td>
+                <td> {{ house.rent }} </td>
+                <td> {{ house.rent }} </td>
+                <td>
+                    <button type="button" class="btn btn-danger ">More info</button>
+                </td>
+            </tr>
+        {% endfor %}
       </tbody>
     </table>
   </section>
