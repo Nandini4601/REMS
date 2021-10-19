@@ -125,7 +125,7 @@ def add_trans():
                                   )
         db.session.add(transaction)
         db.session.commit()
-        return render_template("ack2.html")
+        return render_template("ack1.html")
     return render_template('transactions.html', form=form)
 
 
@@ -228,5 +228,5 @@ def add_employee():
                        service_id=form.service_list.data.id)
         db.session.add(emp)
         db.session.commit()
-        return render_template("ack2.html")
+        return render_template("ack1.html")
     return render_template('employee.html', form=form)
