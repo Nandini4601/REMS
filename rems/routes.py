@@ -210,7 +210,7 @@ def add_house():
                       )
         db.session.add(house)
         db.session.commit()
-        return render_template("ack2.html")
+        return render_template("ack1.html")
     return render_template('houses.html', form=form)
 
 
