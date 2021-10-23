@@ -37,9 +37,9 @@ class HouseAddForm(FlaskForm):
     apt_num = QuerySelectField('Branch', query_factory=lambda: Apartment.query, allow_blank=False,
                                get_label='locality')
     house_num = StringField('House number', validators=[DataRequired()])
-    bhk = StringField('BHK', validators=[DataRequired()])
-    rent = StringField('Rent amount(in Thousands)', validators=[DataRequired()])
-    advance = StringField('Advance amount(in Thousands)', validators=[DataRequired()])
+    bhk = StringField('BHK', validators=[DataRequired(),Length(max=2)])
+    rent = StringField('Rent amount(in Thousands)', validators=[DataRequired(),Length(max=2,message='Enter amount in thousands')])
+    advance = StringField('Advance amount(in Thousands)', validators=[DataRequired(),Length(max=2,message='Enter amount in thousands')])
     submit = SubmitField('Add House')
 
 
@@ -78,6 +78,6 @@ class TransactionAddForm(FlaskForm):
                           validate_choice=False)
     house_num = SelectField('House', render_kw={'class': 'form-control'}, validate_choice=False)
     tenant_id = SelectField('Tenants', render_kw={'class': 'form-control'}, validate_choice=False)
-    amount = StringField('Amount', validators=[DataRequired()])
+    amount = StringField('Amount', validators=[DataRequired(),Length(min=3)])
     description = StringField('Description', validators=[DataRequired()])
     submit = SubmitField('Add Transaction')
