@@ -48,9 +48,9 @@ class TenantAddForm(FlaskForm):
     lastname = StringField('Last Name', validators=[DataRequired()])
     DoB = DateField(validators=[DataRequired()])
     mobile = StringField('Mobile Number', validators=[DataRequired(), Length(min=7, max=10,
-                                                                             message='Name length must be between %(min)d and %(max)d characters')])
+                                                                             message='phone number length must be between %(min)d and %(max)d characters')])
     emer_mobile = StringField('Emergency mobile Number', validators=[DataRequired(), Length(min=7, max=10,
-                                                                                            message='Name length must be between %(min)d and %(max)d characters')])
+                                                                                            message='phone number length must be between %(min)d and %(max)d characters')])
     email = StringField('Email Address', validators=[DataRequired(), Email(), Length(max=60)])
     spouse_mob = StringField('Spouse Mobile Number')
     apt_num = SelectField('Apartment', choices=['Theni', 'Madurai', 'Dindigul'], validate_choice=False)
@@ -78,6 +78,6 @@ class TransactionAddForm(FlaskForm):
                           validate_choice=False)
     house_num = SelectField('House', render_kw={'class': 'form-control'}, validate_choice=False)
     tenant_id = SelectField('Tenants', render_kw={'class': 'form-control'}, validate_choice=False)
-    amount = StringField('Amount', validators=[DataRequired(),Length(min=3)])
+    amount = StringField('Amount', validators=[DataRequired(),Length(min=1, max=2,message='Enter amount in thousands')])
     description = StringField('Description', validators=[DataRequired()])
     submit = SubmitField('Add Transaction')
