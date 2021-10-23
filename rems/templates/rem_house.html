@@ -20,7 +20,7 @@
                         {{ form.hidden_tag() }}
                         <p>
                             {{ form.apt_num.label }}
-                            {{ form.apt_num}}
+                            {{ form.apt_num }}
                             {% for error in form.apt_num.errors %}
                                 <span style="color: red;">[{{ error }}]</span>
                             {% endfor %}

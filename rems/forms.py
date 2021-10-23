@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, SelectField
-from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
+from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Length, AnyOf
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
 from rems.models import Service, Employee, Apartment, House, Transaction, Types
 from wtforms.fields.html5 import DateField
@@ -16,12 +16,15 @@ class EmployeeAddForm(FlaskForm):
     firstname = StringField('First Name', validators=[DataRequired()])
     lastname = StringField('Last Name', validators=[DataRequired()])
     DoB = DateField(validators=[DataRequired()])
-    mobile = StringField('Mobile Number', validators=[DataRequired()])
-    emer_mobile = StringField('Emergency mobile Number', validators=[DataRequired()])
-    email = StringField('Email Address', validators=[DataRequired()])
+    mobile = StringField('Mobile Number', validators=[DataRequired(), Length(min=7, max=10,
+                                                                             message='Name length must be between %(min)d and %(max)d characters')])
+    emer_mobile = StringField('Emergency mobile Number', validators=[DataRequired(), Length(min=7, max=10,
+                                                                                            message='Name length must be between %(min)d and %(max)d characters')])
+    email = StringField('Email Address', validators=[DataRequired(), Email(), Length(max=60)])
     service_list = QuerySelectField('Choose service', query_factory=lambda: Service.query, allow_blank=False,
                                     get_label='service_type')
-    gender = StringField('Gender', validators=[DataRequired()])
+    gender = StringField('Gender', validators=[DataRequired(), AnyOf(values=['Male', 'Female'],
+                                                                     message='Gender must be male or female')])
     submit = SubmitField('Add Employee')
 
     def validate_email(self, email):
@@ -44,9 +47,11 @@ class TenantAddForm(FlaskForm):
     firstname = StringField('First Name', validators=[DataRequired()])
     lastname = StringField('Last Name', validators=[DataRequired()])
     DoB = DateField(validators=[DataRequired()])
-    mobile = StringField('Mobile Number', validators=[DataRequired()])
-    emer_mobile = StringField('Emergency mobile Number', validators=[DataRequired()])
-    email = StringField('Email Address', validators=[DataRequired()])
+    mobile = StringField('Mobile Number', validators=[DataRequired(), Length(min=7, max=10,
+                                                                             message='Name length must be between %(min)d and %(max)d characters')])
+    emer_mobile = StringField('Emergency mobile Number', validators=[DataRequired(), Length(min=7, max=10,
+                                                                                            message='Name length must be between %(min)d and %(max)d characters')])
+    email = StringField('Email Address', validators=[DataRequired(), Email(), Length(max=60)])
     spouse_mob = StringField('Spouse Mobile Number')
     apt_num = SelectField('Apartment', choices=['Theni', 'Madurai', 'Dindigul'], validate_choice=False)
     house_num = SelectField('House', validate_choice=False)

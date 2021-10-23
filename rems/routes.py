@@ -13,11 +13,11 @@ def index():
     ap = Apartment.query
     ids = map(lambda x: x.id, ap)
     places = map(lambda x: x.locality, ap)
-    locs=dict(zip(ids,places))
+    locs = dict(zip(ids, places))
     houses = House.query.filter(
         House.id.not_in(map(lambda x: x[0], Tenant.query.with_entities(Tenant.house_id).all()))).all()
 
-    return render_template('homepage.html',headings=headings,houses=houses,apts=locs)
+    return render_template('homepage.html', headings=headings, houses=houses, apts=locs)
 
 
 @app.route('/login', methods=['GET', 'POST'])
