@@ -196,6 +196,9 @@ def delete_house(id):
     db.session.commit()
     return render_template("ack2.html")
 
+@app.route('/moreinfo')
+def more_info():
+    return render_template("more_info.html")
 
 @app.route('/addhouse', methods=['GET', 'POST'])
 def add_house():
