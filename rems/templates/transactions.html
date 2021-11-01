@@ -1,196 +1,178 @@
 {% extends 'base.html' %}
 {% block heading %}
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/transactions.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/transactions.css') }}">
 
-<!-- Bootstrap DatePicker -->
-<script type="text/javascript">
-  $(function() {
-    $('#txtDate').datepicker({
-      format: "dd/mm/yyyy"
-    });
-  });
-
-
-
-
-
-
-
-
-
-
-
-
-</script>
+    <!-- Bootstrap DatePicker -->
+    <script type="text/javascript">
+        $(function () {
+            $('#txtDate').datepicker({
+                format: "dd/mm/yyyy"
+            });
+        });
+    </script>
 
 
 {% endblock %}
 
 {% block content %}
 
-<div class="container register">
+    <div class="container register">
     <div class="row">
-        <div class="col-md-3 register-left">
-            <h4 class="register-heading" style="color:#fff ">Transactions entry page</h4>
+    <div class="col-md-3 register-left">
+        <h4 class="register-heading" style="color:#fff ">Transactions entry page</h4>
+    </div>
+    <div class="col-md-9 register-right">
+
+    <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <h3 class="register-heading2">Enter the data here</h3>
+        <div class="row register-form">
+            <div class="col-md-6">
+                <form action="{{ url_for('add_trans') }}" method="POST">
+                    {{ form.hidden_tag() }}
+
+                    <p>
+                        {{ form.types_list.label }}
+                        {{ form.types_list(class="form-control") }}
+                        {% for error in form.types_list.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </p>
+
+                    <p>
+                        {{ form.Dot.label }}
+                        {{ form.Dot(class="form-control") }}
+                        {% for error in form.Dot.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </p>
+
+                    <p>
+                        {{ form.employee_list.label }}
+                        {{ form.employee_list(class="form-control") }}
+                        {% for error in form.employee_list.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </p>
+                    <p>
+                        {{ form.apt_num.label }}
+                        {{ form.apt_num }}
+                        {% for error in form.apt_num.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                        {{ form.house_num.label }}
+                        {{ form.house_num }}
+                        {% for error in form.house_num.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                        {{ form.tenant_id.label }}
+                        {{ form.tenant_id }}
+                        {% for error in form.tenant_id.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+
+                    </p>
+
+                    <p>
+                        {{ form.amount.label }}
+                        {{ form.amount(class="form-control") }}
+                        {% for error in form.amount.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </p>
+
+                    <p>
+                        {{ form.description.label }}
+                        {{ form.description(class="form-control") }}
+                        {% for error in form.description.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </p>
+                    <input type="submit" class="btnRegister">
+
+                </form>
+                <script>
+                    let apt_select = document.getElementById('apt_num');
+                    let house_select = document.getElementById('house_num');
+                    let tenant_select = document.getElementById('tenant_id');
+                    apt_select.onchange = function () {
+                        apt = apt_select.value;
+                        fetch('/addtrans/' + apt).then(function (response) {
+                            response.json().then(function (data) {
+                                let optionHTML = '';
+
+                                for (let house of data.houses) {
+                                    optionHTML += '<option value=' + house.id + '>' + house.house_num + '</option>';
+                                }
+
+                                house_select.innerHTML = optionHTML;
+                            });
+                        });
+                    }
+                    house_select.onchange = function () {
+                        house = house_select.value
+
+                        fetch('/addtransh/' + house).then(function (response) {
+                            response.json().then(function (data) {
+                                let optionHTML = '';
+
+                                for (let tenant of data.tenants) {
+                                    optionHTML += '<option value=' + tenant.id + '>' + tenant.tenant_name + '</option>';
+                                }
+
+                                tenant_select.innerHTML = optionHTML;
+                            });
+                        });
+                    }
+
+
+                </script>
+
+                <!--                            <div class="form-group">-->
+                <!--                                <select class="form-control">-->
+                <!--                                    <option value="" disabled selected hidden>Type</option>-->
+                <!--                                </select>-->
+                <!--                            </div>-->
+
+                <!--                            <div class="form-group">-->
+                <!--                                <input id="txtDate" type="text" class="form-control date-input"-->
+                <!--                                       placeholder="Date" readonly="readonly"/>-->
+
+                <!--                            </div>-->
+
+                <!--                            <div class="form-group">-->
+                <!--                                <select class="form-control">-->
+                <!--                                    <option value="" disabled selected hidden>Sender</option>-->
+                <!--                                </select>-->
+                <!--                            </div>-->
+
+
+                <!--                            <div class="form-group">-->
+                <!--                                <select class="form-control">-->
+                <!--                                    <option value="" disabled selected hidden>Receiver</option>-->
+                <!--                                </select>-->
+                <!--                            </div>-->
+
+                <!--                                                        <div class="form-group">-->
+                <!--                                                            <input type="text" class="form-control" placeholder="Amount" value=""/>-->
+                <!--                                                        </div>-->
+
+
+                <!--                        </div>-->
+                <!--                        <div class="col-md-6">-->
+                <!--                            <div class="form-group">-->
+
+                <!--                                <h5>Description</h5>-->
+                <!--                            </div>-->
+                <!--                            <div class="form-group">-->
+                <!--                              <textarea id="w3review" name="w3review" rows="4" cols="50" class="form-control">-->
+
+                </textarea>
+                <!--                            </div>-->
+                <!--                            <input type="submit" class="btnRegister" value="Add"/>-->
+                <!--                        </div>-->
+            </div>
         </div>
-        <div class="col-md-9 register-right">
 
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <h3 class="register-heading2">Enter the data here</h3>
-                    <div class="row register-form">
-                        <div class="col-md-6">
-                            <form action="{{ url_for('add_trans') }}" method="POST">
-                                {{ form.hidden_tag() }}
-
-                                <p>
-                                    {{ form.types_list.label }}
-                                    {{ form.types_list(class="form-control")}}
-                                    {% for error in form.types_list.errors %}
-                                    <span style="color: red;">[{{ error }}]</span>
-                                    {% endfor %}
-                                </p>
-
-                                <p>
-                                    {{ form.Dot.label }}
-                                    {{ form.Dot(class="form-control") }}
-                                    {% for error in form.Dot.errors %}
-                                    <span style="color: red;">[{{ error }}]</span>
-                                    {% endfor %}
-                                </p>
-
-                                <p>
-                                    {{ form.employee_list.label }}
-                                    {{ form.employee_list(class="form-control")}}
-                                    {% for error in form.employee_list.errors %}
-                                    <span style="color: red;">[{{ error }}]</span>
-                                    {% endfor %}
-                                </p>
-                                <p>
-                                    {{ form.apt_num.label }}
-                                    {{ form.apt_num }}
-                                    {% for error in form.apt_num.errors %}
-                                    <span style="color: red;">[{{ error }}]</span>
-                                    {% endfor %}
-                                    {{ form.house_num.label }}
-                                    {{ form.house_num }}
-                                    {% for error in form.house_num.errors %}
-                                    <span style="color: red;">[{{ error }}]</span>
-                                    {% endfor %}
-                                    {{ form.tenant_id.label }}
-                                    {{ form.tenant_id }}
-                                    {% for error in form.tenant_id.errors %}
-                                    <span style="color: red;">[{{ error }}]</span>
-                                    {% endfor %}
-
-                                </p>
-
-                                <p>
-                                    {{ form.amount.label }}
-                                    {{ form.amount(class="form-control") }}
-                                    {% for error in form.amount.errors %}
-                                    <span style="color: red;">[{{ error }}]</span>
-                                    {% endfor %}
-                                </p>
-
-                                <p>
-                                    {{ form.description.label }}
-                                    {{ form.description(class="form-control") }}
-                                    {% for error in form.description.errors %}
-                                    <span style="color: red;">[{{ error }}]</span>
-                                    {% endfor %}
-                                </p>
-                                <input type="submit" class="btnRegister">
-
-                            </form>
-                            <script>
-                                let apt_select=document.getElementById('apt_num');
-                                let house_select= document.getElementById('house_num');
-                                let tenant_select=document.getElementById('tenant_id');
-                                apt_select.onchange = function() {
-                                    apt = apt_select.value;
-                                    fetch('/addtrans/' + apt).then(function(response) {
-                                        response.json().then(function(data){
-                                            let optionHTML = '';
-
-                                           for (let house of data.houses){
-                                                optionHTML += '<option value=' + house.id + '>' + house.house_num + '</option>';
-                                           }
-
-                                           house_select.innerHTML= optionHTML;
-                                        });
-                                    });
-                                }
-                                house_select.onchange =function(){
-                                    house= house_select.value
-
-                                    fetch('/addtransh/' + house).then(function(response) {
-                                        response.json().then(function(data){
-                                            let optionHTML = '';
-
-                                           for (let tenant of data.tenants){
-                                                optionHTML += '<option value=' + tenant.id + '>' + tenant.tenant_name + '</option>';
-                                           }
-
-                                           tenant_select.innerHTML= optionHTML;
-                                        });
-                                    });
-                                }
-
-
-
-
-
-
-
-
-                            </script>
-
-                            <!--                            <div class="form-group">-->
-                            <!--                                <select class="form-control">-->
-                            <!--                                    <option value="" disabled selected hidden>Type</option>-->
-                            <!--                                </select>-->
-                            <!--                            </div>-->
-
-                            <!--                            <div class="form-group">-->
-                            <!--                                <input id="txtDate" type="text" class="form-control date-input"-->
-                            <!--                                       placeholder="Date" readonly="readonly"/>-->
-
-                            <!--                            </div>-->
-
-                            <!--                            <div class="form-group">-->
-                            <!--                                <select class="form-control">-->
-                            <!--                                    <option value="" disabled selected hidden>Sender</option>-->
-                            <!--                                </select>-->
-                            <!--                            </div>-->
-
-
-                            <!--                            <div class="form-group">-->
-                            <!--                                <select class="form-control">-->
-                            <!--                                    <option value="" disabled selected hidden>Receiver</option>-->
-                            <!--                                </select>-->
-                            <!--                            </div>-->
-
-                            <!--                                                        <div class="form-group">-->
-                            <!--                                                            <input type="text" class="form-control" placeholder="Amount" value=""/>-->
-                            <!--                                                        </div>-->
-
-
-                            <!--                        </div>-->
-                            <!--                        <div class="col-md-6">-->
-                            <!--                            <div class="form-group">-->
-
-                            <!--                                <h5>Description</h5>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="form-group">-->
-                            <!--                              <textarea id="w3review" name="w3review" rows="4" cols="50" class="form-control">-->
-
-                            </textarea>
-                            <!--                            </div>-->
-                            <!--                            <input type="submit" class="btnRegister" value="Add"/>-->
-                            <!--                        </div>-->
-                        </div>
-                    </div>
-
-                </div>
-                {% endblock %}
+    </div>
+{% endblock %}
