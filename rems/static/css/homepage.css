@@ -15,6 +15,14 @@ p{
   padding: 7% 10%;
 }
 
+.anchor{
+  color: #fff;
+  text-decoration: none;
+}
+.anchor:hover{
+  color: #F6F6F6;
+}
+
 /* heading section */
 .big-heading{
   font-size: 3.3rem;
@@ -116,7 +124,7 @@ p{
     width:230px;
     height:230px;
   }
-  
+
 
 }
 

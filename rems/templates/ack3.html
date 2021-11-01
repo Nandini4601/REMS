@@ -1,0 +1,8 @@
+{% extends 'acknow.html' %}
+{% block content2 %}
+<link rel="stylesheet" href="{{ url_for('static', filename= 'css/ack3.css') }}">
+{% endblock %}
+{% block content %}
+    <h1 class="heading"><i class="fas fa-check-circle icfa"></i> Invalid login</h1>
+    <button type="button" class="btn btn-dark btn-lg"><a class="anchor" href="{{ url_for('login') }}">Login page</a></button>
+{% endblock %}
