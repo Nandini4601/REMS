@@ -16,11 +16,11 @@ p{
 }
 
 .anchor{
-  color: #fff;
+  color: blue;
   text-decoration: none;
 }
 .anchor:hover{
-  color: #F6F6F6;
+  color: black;
 }
 
 /* heading section */

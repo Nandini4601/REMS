@@ -10,6 +10,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;900&family=Ubuntu:wght@300&display=swap"
+        rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename= 'css/STYLE.css') }}">
 
   <!-- font icons -->
@@ -38,7 +40,7 @@
 
 
 
-      <nav class="navbar navbar-expand-lg navbar-dark">
+      <!-- <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="">MORE&INFO</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -52,6 +54,24 @@
 
           </ul>
         </div>
+      </nav> -->
+
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+          <a class="navbar-brand" href="{{ url_for('index') }}">Lalitha apartments</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+                  aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+              <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                      <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{{ url_for('login') }}">Log in</a>
+                  </li>
+              </ul>
+          </div>
       </nav>
 
 
@@ -87,13 +107,13 @@
         <div class="carousel-item active container-fluid">
           <h2 class="testimonial-text">APARTMENT IMAGE</h2>
           <img class="testimonial-image" src="{{ url_for('static', filename= 'images/img-1.jpeg') }}">
-          <em>Pebbles, New York</em>
+
 
         </div>
         <div class="carousel-item container-fluid">
-          <h2 class="testimonial-text">APARTEMENT </h2>
-          <img class="testimonial-image" src="{{ url_for('static', filename= 'images/img-1.jpeg') }}">
-          <em>Bewerly,illionos</em>
+          <h2 class="testimonial-text">APARTEMENT IMAGE </h2>
+          <img class="testimonial-image" src="{{ url_for('static', filename= 'images/img-2.jpeg') }}">
+
 
         </div>
       </div>
