@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, url_for, request, jsonify
 from rems import app, db
 from rems.forms import LoginForm, EmployeeAddForm, HouseAddForm, TenantAddForm, TransactionAddForm, TenantRemoveForm
 from flask_login import current_user, login_user, logout_user, login_required
-from rems.models import User, Employee, House, Apartment, Tenant, Transaction, Service
+from rems.models import User, Employee, House, Apartment, Tenant, Transaction, Service, Types
 from werkzeug.urls import url_parse
 
 
@@ -18,6 +18,26 @@ def index():
         House.id.not_in(map(lambda x: x[0], Tenant.query.with_entities(Tenant.house_id).all()))).all()
 
     return render_template('homepage.html', headings=headings, houses=houses, apts=locs)
+
+
+@app.route('/viewtrans')
+def view_trans():
+    headings = ("Type", "Date", "Handled by", "For Tenant", "Amount ", "Details")
+    tr = Transaction.query
+    tens = Tenant.query
+    typs = Types.query
+    emps = Employee.query.filter(Employee.service_id.in_([6,7,8]))
+    emp_ids = map(lambda x: x.id, emps)
+    emp_fnames = map(lambda x: x.fname, emps)
+    ten_ids = map(lambda x: x.id, tens)
+    ten_fnames = map(lambda x: x.fname, tens)
+    type_ids = map(lambda x: x.id, typs)
+    typ_names = map(lambda x: x.transaction_type, typs)
+    handlers = dict(zip(emp_ids, emp_fnames))
+    tenants = dict(zip(ten_ids, ten_fnames))
+    t_types = dict(zip(type_ids, typ_names))
+
+    return render_template('vtrans.html', trs=tr,headings=headings, handlers=handlers, tenants=tenants, t_types=t_types)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -196,9 +216,11 @@ def delete_house(id):
     db.session.commit()
     return render_template("ack2.html")
 
+
 @app.route('/moreinfo')
 def more_info():
     return render_template("more_info.html")
+
 
 @app.route('/addhouse', methods=['GET', 'POST'])
 def add_house():

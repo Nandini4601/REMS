@@ -206,7 +206,9 @@
                 <td> {{ house.rent }} </td>
                 <td> {{ house.advance }} </td>
                 <td>
-                    <button type="button" class="btn btn-danger "><a class="anchor" href="{{ url_for('more_info') }}">More info</a></button>
+                    <!-- <button type="button" class="btn btn-danger "> -->
+                      <a class="anchor" href="{{ url_for('more_info') }}">more info</a>
+                    <!-- </button> -->
                 </td>
             </tr>
         {% endfor %}

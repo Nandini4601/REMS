@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block heading %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/rem_houses.css') }}">
+{% endblock %}
+
+
+{% block content %}
+ <section class="white-section" id="pricing">
+
+    <h2 class="section-heading">List of Transactions</h2>
+    <p> List of Transactions displayed by recency</p>
+
+    <table class="table table-hover">
+        <thead class="table-dark">
+        <tr>
+            {% for header in headings %}
+                <th>{{ header }}</th>
+            {% endfor %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for tr in trs %}
+            <tr>
+                <td> {{ t_types[tr.type_id] }}</td>
+                <td> {{ tr.dot }}</td>
+                <td> {{ handlers[tr.emp_id] }}</td>
+                <td> {{ tenants[tr.ten_id] }}</td>
+                <td> {{ tr.amt }}</td>
+                <td> {{ tr.desc }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}
