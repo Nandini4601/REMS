@@ -22,7 +22,7 @@ def index():
 
 @app.route('/viewtrans')
 def view_trans():
-    headings = ("Type", "Date", "Handled by", "For Tenant", "Amount ", "Details")
+    headings = ("Type", "Date", "Handled by", "For Tenant", "Amount(in thousands) ", "Details")
     tr = Transaction.query
     tens = Tenant.query
     typs = Types.query
